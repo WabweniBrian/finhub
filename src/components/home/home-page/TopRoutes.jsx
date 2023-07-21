@@ -37,7 +37,7 @@ const TopRoutes = () => {
   ];
   return (
     <div>
-      <div className="max-w-6xl mx-auto !w-[85%]">
+      <div className="max-w-6xl mx-auto w-full sm:!w-[85%]">
         <div className="mx-auto my-6 flex-center-center">
           <div className="relative h-auto before:absolute before:h-full before:w-[2px] before:bg-red-500 before:left-1/2 before:-translate-x-1/2">
             <ul>

@@ -366,12 +366,16 @@ footer a {
   @apply right-full mr-[2px] sm:mr-[4px];
 }
 
-@media screen and (max-width: 400px) {
+@media screen and (max-width: 380px) {
   .route:nth-child(odd) {
-    @apply float-left clear-right mr-[220px] -translate-x-2 sm:!translate-x-0 sm:mr-[235px];
+    @apply float-left clear-right mr-[140px] max-w-[140px] -translate-x-2 sm:!translate-x-0 sm:mr-[235px];
   }
 
   .route:nth-child(even) {
-    @apply float-right -ml-3 translate-x-[8px] sm:!translate-x-0 clear-left sm:-ml-4;
+    @apply float-right -ml-3 translate-x-[8px] max-w-[140px] sm:!translate-x-0 clear-left sm:-ml-4;
+  }
+
+  .route span {
+    @apply !text-xs;
   }
 }

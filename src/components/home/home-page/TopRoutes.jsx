@@ -44,9 +44,9 @@ const TopRoutes = () => {
               {routes.map(({ id, name }) => (
                 <li
                   key={id}
-                  className="flex-align-center max-w-[200px] w-full my-2 gap-2 shadow-sm border p-2 rounded-lg route"
+                  className="flex-align-center max-w-[160px] sm:max-w-[200px] w-full my-2 gap-2 shadow-sm border p-2 rounded-lg route"
                 >
-                  <span>{name}</span>
+                  <span className="text-sm sm:text-base">{name}</span>
                 </li>
               ))}
             </ul>

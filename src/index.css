@@ -348,11 +348,11 @@ footer a {
 
 /* ------------------Top Routes section------------------ */
 .route:nth-child(odd) {
-  @apply float-left clear-right mr-[220px] -translate-x-3 sm:translate-x-0 sm:mr-[235px];
+  @apply float-left clear-right mr-[220px] translate-x-2 sm:!translate-x-0 sm:mr-[235px];
 }
 
 .route:nth-child(even) {
-  @apply float-right -ml-3 translate-x-[10px] sm:translate-x-0 clear-left sm:-ml-4;
+  @apply float-right -ml-3 -translate-x-[9px] sm:!translate-x-0 clear-left sm:-ml-4;
 }
 
 .route {
@@ -364,4 +364,14 @@ footer a {
 }
 .route:nth-child(even)::before {
   @apply right-full mr-[2px] sm:mr-[4px];
+}
+
+@media screen and (max-width: 400px) {
+  .route:nth-child(odd) {
+    @apply float-left clear-right mr-[220px] -translate-x-2 sm:!translate-x-0 sm:mr-[235px];
+  }
+
+  .route:nth-child(even) {
+    @apply float-right -ml-3 translate-x-[8px] sm:!translate-x-0 clear-left sm:-ml-4;
+  }
 }

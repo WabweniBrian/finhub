@@ -50,19 +50,7 @@ const Navbar = () => {
         </Link>
 
         {/* Toggle Button */}
-        <div className="flex-align-center gap-x-2">
-          <div className="flex-align-center gap-x-2 md:hidden">
-            <Link to="/login" className="btn btn-primary">
-              Login
-            </Link>
-
-            <Link
-              to="/register"
-              className="btn border border-primary text-primary"
-            >
-              Register
-            </Link>
-          </div>
+        <div>
           <button
             className="p-2 rounded-lg toggle cursor-default sm:cursor-pointer feather-menu hover:bg-hover-bg md:hidden"
             onClick={toggleMenu}
@@ -91,6 +79,18 @@ const Navbar = () => {
               <NavLink to={link.url}>{link.name}.</NavLink>
             </li>
           ))}
+          <div className="mt-3">
+            <Link to="/login" className="btn btn-primary">
+              Login
+            </Link>
+
+            <Link
+              to="/register"
+              className="btn border border-primary text-primary ml-2"
+            >
+              Register
+            </Link>
+          </div>
         </ul>
 
         {/* Right Menu */}

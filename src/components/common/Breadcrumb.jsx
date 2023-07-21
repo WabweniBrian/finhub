@@ -5,11 +5,6 @@ const Breadcrumb = () => {
   const location = useLocation();
   const paths = location.pathname.split("/").filter((path) => path !== "");
 
-  // Hide the breadcrumb if current page is '/admin'
-  if (location.pathname === "/admin") {
-    return null;
-  }
-
   return (
     <nav className="flex" aria-label="Breadcrumb">
       <ol className="list-none flex items-center !text-sm">

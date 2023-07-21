@@ -33,6 +33,9 @@ const Navbar = () => {
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
   };
+  const closeMenu = () => {
+    setIsMenuOpen(false);
+  };
 
   window.addEventListener("scroll", () => {
     window.scrollY > 0 ? setSlideNavbar(true) : setSlideNavbar(false);
@@ -75,7 +78,11 @@ const Navbar = () => {
           }`}
         >
           {navbarLinks.map((link) => (
-            <li className="capitalize nav-link" key={link.id}>
+            <li
+              className="capitalize nav-link"
+              key={link.id}
+              onClick={closeMenu}
+            >
               <NavLink to={link.url}>{link.name}.</NavLink>
             </li>
           ))}

@@ -3,7 +3,6 @@ import RecentCustomers from "../../components/admin/home/RecentCustomers";
 import { BiBusSchool } from "react-icons/bi";
 import { MdAirlineSeatReclineExtra } from "react-icons/md";
 import { GiRoad } from "react-icons/gi";
-import Breadcrumb from "../../components/common/BreadCrumb";
 import AnalyticsCards from "../../components/admin/reports/AnalyticsCards";
 
 const ConductorDashboard = () => {
@@ -32,9 +31,8 @@ const ConductorDashboard = () => {
   ];
   return (
     <div>
-      <div className="flex-center-between">
+      <div>
         <h1 className="text-2xl font-semibold">Dashboard</h1>
-        <Breadcrumb />
       </div>
       <div className="mt-5">
         <AnalyticsCards cardsData={cardsData} />

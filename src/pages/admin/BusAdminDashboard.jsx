@@ -1,6 +1,5 @@
 import React from "react";
 import AnalyticsCards from "../../components/admin/reports/AnalyticsCards";
-import Breadcrumb from "../../components/common/BreadCrumb";
 import NotificationsList from "../../components/admin/notifications/NotificationsList";
 import RecentOrders from "../../components/admin/home/RecentOrders";
 import { BiBusSchool, BiMoney } from "react-icons/bi";
@@ -55,9 +54,8 @@ const BusAdminDashboard = () => {
   ];
   return (
     <div>
-      <div className="flex-center-between">
+      <div>
         <h1 className="text-2xl font-semibold">Dashboard</h1>
-        <Breadcrumb />
       </div>
       <div className="mt-5">
         <AnalyticsCards cardsData={cardsData} />

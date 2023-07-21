@@ -30,10 +30,10 @@ const HeroSlider = () => {
         loop={true}
         grabCursor={true}
       >
-        <div className="absolute top-1/2 left-1 sm:left-2 p-3 rounded-full bg-white border sm:!border-none -translate-y-1/2 z-50 custom-swiper-button-prev cursor-pointer">
+        <div className="absolute !hidden sm:!flex top-1/2 left-1 sm:left-2 p-3 rounded-full bg-white border sm:!border-none -translate-y-1/2 z-50 custom-swiper-button-prev cursor-pointer">
           <FiArrowLeft />
         </div>
-        <div className="absolute top-1/2 right-1 sm:right-2 p-3 rounded-full bg-white border sm:!border-none -translate-y-1/2 z-50 custom-swiper-button-next cursor-pointer">
+        <div className="absolute !hidden sm:!flex top-1/2 right-1 sm:right-2 p-3 rounded-full bg-white border sm:!border-none -translate-y-1/2 z-50 custom-swiper-button-next cursor-pointer">
           <FiArrowRight />
         </div>
         <SwiperSlide>

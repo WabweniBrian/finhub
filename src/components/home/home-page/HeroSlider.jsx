@@ -63,7 +63,7 @@ const HeroSlider = () => {
             />
           </div>
         </SwiperSlide>
-        <div className="absolute h-2/3 rounded-lg md:rounded-none w-2/3 md:h-full md:w-1/2 p-4 md:p-0 center-center md:right-0 md:translate-x-0  bg-white/50 backdrop-blur-sm z-30 flex-center-center">
+        <div className="absolute h-2/3 rounded-lg md:rounded-none w-[95%] md:h-full md:w-1/2 p-4 md:p-0 center-center md:right-0 md:translate-x-0  bg-white/50 backdrop-blur-sm z-30 flex-center-center">
           <BookingFilters buttonText={"Search Buses"} />
         </div>
       </Swiper>

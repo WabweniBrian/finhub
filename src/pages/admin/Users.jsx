@@ -3,7 +3,7 @@ import { FiPlus } from "react-icons/fi";
 import UsersList from "../../components/admin/users/UsersList";
 import useDataTables from "../../components/common/useDataTables";
 import UserFormModal from "../../components/admin/users/UserFormModal";
-import Breadcrumb from "../../components/common/BreadCrumb";
+import Breadcrumb from "../../components/common/Breadcrumb";
 
 const Users = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);

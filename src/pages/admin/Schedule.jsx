@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import ScheduleList from "../../components/admin/schedule/ScheduleList";
 import { FiPlus } from "react-icons/fi";
 import ScheduleFormModal from "../../components/admin/schedule/ScheduleFormModal";
-import Breadcrumb from "../../components/common/BreadCrumb";
+import Breadcrumb from "../../components/common/Breadcrumb";
 
 const Schedule = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);

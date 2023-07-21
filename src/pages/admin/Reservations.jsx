@@ -1,8 +1,8 @@
 import React from "react";
-import Breadcrumb from "../../components/common/BreadCrumb";
 import DatePicker from "../../components/admin/reservations/DatePicker";
 import { BiPrinter } from "react-icons/bi";
 import ReservationsList from "../../components/admin/reservations/ReservationsList";
+import Breadcrumb from "../../components/common/Breadcrumb";
 
 const Reservations = () => {
   return (

@@ -4,7 +4,7 @@ import { FiVideo, FiPhone, FiMoreVertical } from "react-icons/fi";
 import AllMessages from "../../components/admin/messages/AllMessages";
 import MessageChats from "../../components/admin/messages/MessageChats";
 import MessageInput from "../../components/admin/messages/MessageInput";
-import Breadcrumb from "../../components/common/BreadCrumb";
+import Breadcrumb from "../../components/common/Breadcrumb";
 
 const Messages = () => {
   return (

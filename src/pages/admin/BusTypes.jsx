@@ -3,7 +3,7 @@ import { FiPlus } from "react-icons/fi";
 import BusTypesList from "../../components/admin/buses/BusTypesList";
 import useDataTables from "../../components/common/useDataTables";
 import BusTypesFormModal from "../../components/admin/buses/BusTypesFormModal";
-import Breadcrumb from "../../components/common/BreadCrumb";
+import Breadcrumb from "../../components/common/Breadcrumb";
 
 const BusTypes = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);

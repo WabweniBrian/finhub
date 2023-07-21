@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { FiPlus } from "react-icons/fi";
 import RoutesList from "../../components/admin/bus-routes/RoutesList";
 import BusRoutesFormModal from "../../components/admin/bus-routes/BusRoutesFormModal";
-import Breadcrumb from "../../components/common/BreadCrumb";
+import Breadcrumb from "../../components/common/Breadcrumb";
 
 const BusRoutes = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);

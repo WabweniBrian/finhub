@@ -13,7 +13,7 @@ import { BiBusSchool, BiMoney } from "react-icons/bi";
 import { FiUsers } from "react-icons/fi";
 import { MdAirlineSeatReclineExtra } from "react-icons/md";
 import { GiRoad } from "react-icons/gi";
-import Breadcrumb from "../../components/common/BreadCrumb";
+import Breadcrumb from "../../components/common/Breadcrumb";
 
 const Reports = () => {
   const cardsData = [

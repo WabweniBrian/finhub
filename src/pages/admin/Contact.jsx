@@ -1,5 +1,5 @@
 import { useState } from "react";
-import Breadcrumb from "../../components/common/BreadCrumb";
+import Breadcrumb from "../../components/common/Breadcrumb";
 
 const Contact = () => {
   const [contact, setContact] = useState({

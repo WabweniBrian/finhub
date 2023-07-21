@@ -7,7 +7,7 @@ import {
   openSidebar,
   toggleDropdown,
 } from "../../features/uiSlice";
-import Dropdown from "./DropDown";
+import Dropdown from "./Dropdown";
 import { Link } from "react-router-dom";
 import { useRef } from "react";
 

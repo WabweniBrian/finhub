@@ -1,8 +1,7 @@
-import { Link, useLocation } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { FiHome, FiChevronRight } from "react-icons/fi";
 
 const Breadcrumb = () => {
-  const location = useLocation();
   const paths = location.pathname.split("/").filter((path) => path !== "");
 
   return (

@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import { FiHome, FiChevronRight } from "react-icons/fi";
 
-const Breadcrumb = () => {
+const BreadCrumb = () => {
   const paths = location.pathname.split("/").filter((path) => path !== "");
 
   return (
@@ -50,4 +50,4 @@ const Breadcrumb = () => {
   );
 };
 
-export default Breadcrumb;
+export default BreadCrumb;

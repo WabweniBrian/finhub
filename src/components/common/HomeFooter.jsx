@@ -4,7 +4,7 @@ import { FaWhatsapp } from "react-icons/fa";
 const HomeFooter = () => {
   return (
     <>
-      <footer className="py-10 max-w-7xl mx-auto mt-16">
+      <footer className="py-10 max-w-7xl mx-auto mt-16 px-4">
         <div className="flex flex-wrap gap-2">
           <div className="flex-1 basis-[10rem]">
             <Link to="/">

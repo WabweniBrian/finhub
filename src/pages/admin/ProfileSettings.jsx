@@ -1,8 +1,8 @@
 import React from "react";
 import { Tabs as TabWrapper, Tab, TabList, TabPanel } from "react-tabs";
-import Breadcrumb from "../../components/common/BreadCrumb";
 import Profile from "../../components/admin/profile/Profile";
 import Password from "../../components/admin/profile/Password";
+import Breadcrumb from "../../components/common/BreadCrumb";
 
 const ProfileSettings = () => {
   return (

@@ -1,5 +1,4 @@
 import React from "react";
-import Breadcrumb from "../../components/common/BreadCrumb";
 import AnalyticsCards from "../../components/admin/reports/AnalyticsCards";
 import {
   dognutChartData,
@@ -14,6 +13,7 @@ import { BiBusSchool, BiMoney } from "react-icons/bi";
 import { FiUsers } from "react-icons/fi";
 import { MdAirlineSeatReclineExtra } from "react-icons/md";
 import { GiRoad } from "react-icons/gi";
+import Breadcrumb from "../../components/common/BreadCrumb";
 
 const Reports = () => {
   const cardsData = [

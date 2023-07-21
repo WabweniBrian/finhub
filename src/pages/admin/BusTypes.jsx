@@ -1,9 +1,9 @@
 import React, { useState } from "react";
-import Breadcrumb from "../../components/common/BreadCrumb";
 import { FiPlus } from "react-icons/fi";
 import BusTypesList from "../../components/admin/buses/BusTypesList";
 import useDataTables from "../../components/common/useDataTables";
 import BusTypesFormModal from "../../components/admin/buses/BusTypesFormModal";
+import Breadcrumb from "../../components/common/BreadCrumb";
 
 const BusTypes = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);

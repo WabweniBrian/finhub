@@ -1,9 +1,9 @@
 import React, { useState } from "react";
-import Breadcrumb from "../../components/common/BreadCrumb";
 import { FiPlus } from "react-icons/fi";
 import UsersList from "../../components/admin/users/UsersList";
 import useDataTables from "../../components/common/useDataTables";
 import UserFormModal from "../../components/admin/users/UserFormModal";
+import Breadcrumb from "../../components/common/BreadCrumb";
 
 const Users = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);

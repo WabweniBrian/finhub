@@ -1,9 +1,9 @@
 import React, { useState } from "react";
-import Breadcrumb from "../../components/common/BreadCrumb";
 import { FiPlus, FiLayers } from "react-icons/fi";
 import BusSeatsList from "../../components/admin/buses/BusSeatsList";
 import { Link } from "react-router-dom";
 import BusFormModal from "../../components/admin/buses/BusFormModal";
+import Breadcrumb from "../../components/common/BreadCrumb";
 
 const Seats = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);

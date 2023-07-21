@@ -1,6 +1,6 @@
 import React from "react";
-import Breadcrumb from "../../components/common/BreadCrumb";
 import NotificationsList from "../../components/admin/notifications/NotificationsList";
+import Breadcrumb from "../../components/common/BreadCrumb";
 
 const Notifications = () => {
   return (

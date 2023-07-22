@@ -24,7 +24,7 @@ const Messages = () => {
           </div>
         </div>
         <div className="md:col-span-2 border rounded-lg">
-          <div className="p-4 flex-center-between border-b">
+          <div className="p-4 sm:flex-center-between border-b">
             <div className="flex-align-center gap-x-2">
               <div className="avatar">
                 <img src="/images/avatar.png" alt="" className="rounded-full" />
@@ -34,7 +34,7 @@ const Messages = () => {
                 <p className="text-sm">Active Now</p>
               </div>
             </div>
-            <div className="flex-align-center gap-x-2">
+            <div className="flex-align-center justify-end mt-2 sm:mt-0 gap-x-2">
               <div className="icon-box">
                 <FiVideo />
               </div>

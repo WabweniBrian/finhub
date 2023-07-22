@@ -24,7 +24,7 @@ const Seats = () => {
         <div className="sm:flex-center-between pb-2 border-b">
           <div className="sm:flex-align-center gap-x-2">
             <button
-              className="btn btn-secondary flex-align-center gap-x-2 w-full sm:w-fit"
+              className="btn btn-secondary flex-center-center sm:flex-align-center gap-x-2 w-full sm:w-fit"
               onClick={handleOpenModal}
             >
               <FiPlus />

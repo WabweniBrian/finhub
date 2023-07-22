@@ -16,9 +16,9 @@ const Seats = () => {
     <div className="grid grid-cols-5 gap-2 mt-3 place-items-center">
       {seats.map(({ id, booked }, index) => (
         <button
-          className={`w-12 h-12 flex-center-center bg-salte-100 border rounded-md ${
+          className={`w-10 h-10 sm:w-12 sm:h-12 flex-center-center bg-salte-100 border rounded-md ${
             booked &&
-            "bg-primary text-white disabled: cursor-not-allowed !border-none"
+            "bg-primary !text-sm sm:!text-base text-white disabled: cursor-not-allowed !border-none"
           } ${
             selectedSeats.includes(id)
               ? "bg-secondary text-white !border-none"

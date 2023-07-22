@@ -12,7 +12,7 @@ const Dropdown = () => {
     <>
       {isDropdownOpen && (
         <motion.div
-          className="dropdown absolute right-0 top-full mt-1 p-2 !rounded-xl w-64 shadow-lg border shadow-slate-200 z-40 bg-white"
+          className="dropdown absolute right-0 top-full mt-1 p-2 !rounded-xl w-64 shadow-lg border shadow-slate-600/10 z-40 bg-white"
           initial={{ scale: 0.6, opacity: 0, y: 20 }}
           animate={{ scale: 1, opacity: 1, y: 0 }}
         >

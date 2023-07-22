@@ -71,7 +71,10 @@ const DatePicker = () => {
         className="pl-8"
       />
       {showPicker && (
-        <div ref={pickerRef} className="absolute top-full right-0 z-10">
+        <div
+          ref={pickerRef}
+          className="absolute top-full -right-36 sm:right-0 z-10"
+        >
           <DateRangePicker
             ranges={[selectedRange]}
             onChange={handleDateSelect}

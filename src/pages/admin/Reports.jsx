@@ -66,7 +66,7 @@ const Reports = () => {
         <h1 className="text-2xl font-semibold">Reports</h1>
         <Breadcrumb />
       </div>
-      <div className="m-4">
+      <div className="mt-4">
         <AnalyticsCards cardsData={cardsData} />
       </div>
       <div className="mt-5 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">

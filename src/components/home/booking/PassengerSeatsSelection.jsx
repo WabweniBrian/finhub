@@ -4,7 +4,7 @@ import { GiSteeringWheel } from "react-icons/gi";
 
 const PassengerSeatsSelection = () => {
   return (
-    <div className="rounded-lg border p-6">
+    <div className="rounded-lg border p-4 sm:p-6">
       <div className="flex-center-center my-3 gap-4">
         <div className="flex-align-center gap-2">
           <div className="w-5 h-5 flex-center-center  border rounded-md" />
@@ -15,7 +15,7 @@ const PassengerSeatsSelection = () => {
           <h1>Booked</h1>
         </div>
       </div>
-      <div className=" mt-4 max-w-sm mx-auto w-full px-3 border rounded-lg p-3">
+      <div className=" mt-4 sm:max-w-sm mx-auto w-full sm:px-3 sm:border rounded-lg sm:p-3">
         <div className="flex justify-end mr-2">
           <GiSteeringWheel className="text-3xl" />
         </div>

@@ -94,7 +94,7 @@ const BusList = () => {
                   </div>
                 </div>
                 <div>
-                  <h1>Shs. {bus.fare}</h1>
+                  <h1 className="text-lg font-semibold">Shs. {bus.fare}</h1>
                   <button
                     className="btn btn-primary mt-3"
                     onClick={handleOpenModal}

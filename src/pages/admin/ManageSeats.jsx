@@ -96,7 +96,7 @@ const ManageSeats = () => {
   ];
   return (
     <div>
-      <div className="flex-center-between">
+      <div className="flex-center-center sm:flex-center-between flex-col sm:flex-row gap-y-3 sm:gap-y-0">
         <h1 className="text-2xl font-semibold">Manage Seats</h1>
         <Breadcrumb />
       </div>

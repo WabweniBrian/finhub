@@ -45,7 +45,7 @@ const BookingTypeModal = ({ isModalOpen, setIsModalOpen }) => {
           {type.map((bookingType) => (
             <div
               key={bookingType.id}
-              className={`w-36 h-36 rounded-lg grid place-items-center text-center border-2 border-slate-300 bg-white cursor-pointer relative overflow-hidden shadow shadow-slate-300 ${
+              className={`w-28 h-28 sm:w-36 sm:h-36 rounded-lg grid place-items-center text-center border-2 border-slate-300 bg-white cursor-pointer relative overflow-hidden shadow shadow-slate-300 ${
                 bookingType.isActive && " !border-primary shadow-primary/30"
               }`}
               onClick={() => toggleActiveState(bookingType)}

@@ -21,10 +21,10 @@ const Seats = () => {
         <Breadcrumb />
       </div>
       <div className="mt-5 card">
-        <div className="flex-center-between pb-2 border-b">
-          <div className="flex-align-center gap-x-2">
+        <div className="sm:flex-center-between pb-2 border-b">
+          <div className="sm:flex-align-center gap-x-2">
             <button
-              className="btn btn-secondary flex-align-center gap-x-2"
+              className="btn btn-secondary flex-align-center gap-x-2 w-full sm:w-fit"
               onClick={handleOpenModal}
             >
               <FiPlus />
@@ -32,13 +32,13 @@ const Seats = () => {
             </button>
             <Link
               to="manage"
-              className="btn border border-primary text-primary shadow shadow-primary/30 flex-align-center gap-x-2"
+              className="btn border border-primary text-primary shadow shadow-primary/30 flex-align-center gap-x-2 mt-3 sm:mt-0"
             >
               <FiLayers />
               <span>Manage Seats</span>
             </Link>
           </div>
-          <div>
+          <div className="mt-3 sm:mt-0">
             <select name="operator" id="operator" className="pr-8">
               <option value="">Select</option>
               <option value="Jaguar">Jaguar</option>

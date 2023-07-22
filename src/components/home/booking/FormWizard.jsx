@@ -36,13 +36,13 @@ const FormWizard = ({ steps, type, variant }) => {
                 <>
                   {index !== 0 && (
                     <div className="flex-1 mt-5">
-                      <div className="h-0.5 bg-slate-300"></div>
+                      <div className="h-0.5 bg-slate-300 hidden sm:block"></div>
                     </div>
                   )}
                 </>
               )}
               <div
-                className={`flex gap-x-4 items-center space-y-2 h-full ${
+                className={`!flex-1 flex gap-x-4 items-center space-y-2 h-full ${
                   variant === "three" &&
                   "relative px-2 py-1 before:absolute before:w-[0.8rem] before:h-[0.8rem] before:bg-white before:-right-[0.5rem] before:border before:border-transparent before:border-t-slate-300 before:border-r-slate-300 before:rotate-45 wizard-step"
                 } ${variant === "one" && "flex-col"}`}
@@ -126,7 +126,9 @@ const FormWizard = ({ steps, type, variant }) => {
                       : "text-zinc-400"
                   }`}
                 >
-                  <div className="text-lg font-medium">{step.label}</div>
+                  <div className="text-sm sm:text-lg font-medium">
+                    {step.label}
+                  </div>
                   <div className="hidden sm:block">{step.description}</div>
                 </div>
               </div>

@@ -18,12 +18,12 @@ const Login = () => {
           <input type="password" placeholder="Password" />
         </div>
       </div>
-      <div className="mt-4 flex-center-between">
+      <div className="mt-4 sm:flex-center-between">
         <div className="flex-align-center gap-2">
           <input type="checkbox" id="remember" />
           <label htmlFor="remember">Remember me</label>
         </div>
-        <Link className="text-primary hover:underline">
+        <Link className="text-primary hover:underline mt-3 sm:mt-0 block">
           Forgot your password?
         </Link>
       </div>

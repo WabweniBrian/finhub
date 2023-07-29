@@ -1,17 +1,14 @@
 import React, { useState, useEffect, useRef } from "react";
 import { BiSearchAlt } from "react-icons/bi";
 import {
-  BiCalendar,
   BiMessageRoundedDots,
-  BiBusSchool,
-  BiMoney,
-  BiUserCircle,
+  BiWalletAlt,
+  BiInfoCircle,
+  BiCoinStack,
 } from "react-icons/bi";
-import { FiGrid, FiBell, FiUsers, FiGlobe, FiPhone } from "react-icons/fi";
+import { FiGrid, FiBell, FiUsers, FiSettings, FiLayers } from "react-icons/fi";
 import { AiOutlineFileDone } from "react-icons/ai";
-import { GiRoad } from "react-icons/gi";
-import { FaBusAlt } from "react-icons/fa";
-import { MdAirlineSeatReclineExtra } from "react-icons/md";
+import { GiBank, GiGraduateCap } from "react-icons/gi";
 import { Link } from "react-router-dom";
 
 const CommandBox = () => {
@@ -21,19 +18,42 @@ const CommandBox = () => {
 
   const navLinks = [
     {
-      label: "HOME",
+      label: "DASHBOARD",
       links: [
         {
           id: 1,
-          title: "Dashboad",
+          title: "Overview",
           icon: <FiGrid />,
-          url: "/admin",
+          url: "/",
         },
         {
           id: 2,
-          title: "Reservations",
-          icon: <BiMoney />,
-          url: "/admin/reservations",
+          title: "Transactions",
+          icon: <BiWalletAlt />,
+          url: "/transactions",
+        },
+        {
+          id: 3,
+          title: "Settings",
+          icon: <FiSettings />,
+          subLinks: [
+            {
+              title: "Profile",
+              url: "/profile",
+            },
+            {
+              title: "Social links",
+              url: "/social-links",
+            },
+            {
+              title: "About",
+              url: "/about",
+            },
+            {
+              title: "Contact Info",
+              url: "/contact",
+            },
+          ],
         },
       ],
     },
@@ -44,43 +64,90 @@ const CommandBox = () => {
           id: 4,
           title: "Users",
           icon: <FiUsers />,
-          url: "/admin/users",
+          subLinks: [
+            {
+              title: "All users",
+              url: "/users",
+            },
+            {
+              title: "New User",
+              url: "/users/new",
+            },
+            {
+              title: "Roles & Permissions",
+              url: "/roles-permissions",
+            },
+          ],
         },
         {
           id: 5,
-          title: "Bus Operators",
-          icon: <BiBusSchool />,
-          url: "/admin/bus-operators",
+          title: "Loans",
+          icon: <BiCoinStack />,
+          subLinks: [
+            {
+              title: "Loans",
+              url: "/loans",
+            },
+            {
+              title: "Plans",
+              url: "loans/plans",
+            },
+            {
+              title: "Applications",
+              url: "loans/applications",
+            },
+            {
+              title: "Repayments",
+              url: "loans/repayments",
+            },
+          ],
         },
         {
           id: 6,
-          title: "Bus Routes",
-          icon: <GiRoad />,
-          url: "/admin/bus-routes",
+          title: "Savings",
+          icon: <GiBank />,
+          url: "/savings",
         },
         {
           id: 7,
-          title: "Bus Types",
-          icon: <FaBusAlt />,
-          url: "/admin/bus-types",
+          title: "Study Materials",
+          icon: <GiGraduateCap />,
+          url: "/study-materials",
         },
         {
           id: 8,
-          title: "Bus & Seats",
-          icon: <MdAirlineSeatReclineExtra />,
-          url: "/admin/seats",
+          title: "FAQs & Inquiries",
+          icon: <BiInfoCircle />,
+          url: "/faq-inquiries",
         },
         {
           id: 9,
           title: "Reports & Analytics",
           icon: <AiOutlineFileDone />,
-          url: "/admin/reports",
+          subLinks: [
+            {
+              title: "Loans",
+              url: "/reports/loan",
+            },
+            {
+              title: "Savings",
+              url: "/reports/savings",
+            },
+            {
+              title: "Study Materials",
+              url: "/reports/study-materials",
+            },
+            {
+              title: "Logs",
+              url: "/reports/logs",
+            },
+          ],
         },
         {
           id: 10,
-          title: "Schedule",
-          icon: <BiCalendar />,
-          url: "/admin/schedule",
+          title: "Plans",
+          icon: <FiLayers />,
+          url: "/plans",
         },
       ],
     },
@@ -91,42 +158,13 @@ const CommandBox = () => {
           id: 11,
           title: "Notifications",
           icon: <FiBell />,
-          url: "/admin/notifications",
+          url: "/notifications",
         },
         {
           id: 12,
           title: "Messages",
           icon: <BiMessageRoundedDots />,
-          url: "/admin/messages",
-        },
-      ],
-    },
-    {
-      label: "OTHERS",
-      links: [
-        {
-          id: 13,
-          title: "Manage Seats",
-          icon: <MdAirlineSeatReclineExtra />,
-          url: "/admin/seats/manage",
-        },
-        {
-          id: 14,
-          title: "Profile",
-          icon: <BiUserCircle />,
-          url: "/admin/profile",
-        },
-        {
-          id: 15,
-          title: "Website",
-          icon: <FiGlobe />,
-          url: "/",
-        },
-        {
-          id: 16,
-          title: "Contact STL",
-          icon: <FiPhone />,
-          url: "/admin/contact",
+          url: "/messages",
         },
       ],
     },
@@ -135,8 +173,26 @@ const CommandBox = () => {
   const filteredLinks = navLinks
     .map((linkGroup) => ({
       ...linkGroup,
-      links: linkGroup.links.filter((link) =>
-        link.title.toLowerCase().includes(searchQuery.toLowerCase())
+      links: linkGroup.links.map((link) => {
+        if (link.subLinks) {
+          const filteredSubLinks = link.subLinks.filter((subLink) =>
+            subLink.title.toLowerCase().includes(searchQuery.toLowerCase())
+          );
+          return {
+            ...link,
+            subLinks: filteredSubLinks,
+          };
+        } else {
+          return link;
+        }
+      }),
+    }))
+    .map((linkGroup) => ({
+      ...linkGroup,
+      links: linkGroup.links.filter(
+        (link) =>
+          link.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
+          (link.subLinks && link.subLinks.length > 0)
       ),
     }))
     .filter((linkGroup) => linkGroup.links.length > 0);
@@ -173,10 +229,10 @@ const CommandBox = () => {
     <div>
       {isSearchVisible && (
         <div
-          className="popup fixed top-0 left-0 w-full h-full bg-gray-800 bg-opacity-50 flex items-center justify-center z-[999]"
+          className="popup fixed top-0 left-0 w-full h-full bg-gray-800 bg-opacity-50 backdrop-blur-sm flex items-center justify-center z-[999]"
           onClick={closePopup}
         >
-          <div className="max-w-2xl card w-full mx-3">
+          <div className="max-w-2xl card w-full mx-3 h-[80vh] overflow-y-auto">
             <div className="relative">
               <BiSearchAlt className="absolute top-1/2 -translate-y-1/2 left-2" />
               <input
@@ -186,27 +242,41 @@ const CommandBox = () => {
                 value={searchQuery}
                 onChange={handleSearchChange}
                 ref={searchInputRef}
-                className="pl-8"
+                className="pl-8 border-gray-300"
               />
             </div>
 
             {filteredLinks.length > 0 ? (
-              <div className="mt-5 grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
+              <div className="mt-5 grid grid-cols-2 md:grid-cols-3">
                 {filteredLinks.map((linkGroup) => (
                   <div key={linkGroup.label}>
                     <h5 className="text-[14px] font-semibold mb-2">
                       {linkGroup.label}
                     </h5>
-                    {linkGroup.links.map((link) => (
-                      <Link
-                        key={link.id}
-                        to={link.url}
-                        className="py-1 flex items-center mb-2 text-gray-600 hover:text-gray-900"
-                        onClick={() => setIsSearchVisible(false)}
-                      >
-                        <span className="mr-2">{link.icon}</span>
-                        {link.title}
-                      </Link>
+                    {linkGroup?.links?.map((link) => (
+                      <div key={link.id}>
+                        <Link
+                          to={link.url}
+                          className="py-1 flex items-center mb-2 text-gray-600 hover:text-gray-900"
+                          onClick={() => setIsSearchVisible(false)}
+                        >
+                          <span className="mr-2">{link.icon}</span>
+                          {link.title}
+                        </Link>
+                        <ul className="ml-14">
+                          {link?.subLinks?.map((link) => (
+                            <li key={link?.title}>
+                              <Link
+                                to={link.url}
+                                className="text-sm my-2 relative before:absolute before:w-2 before:h-2 before:border before:border-primary before:rounded-full before:-left-4 before:top-1/2 before:-translate-y-1/2"
+                                onClick={() => setIsSearchVisible(false)}
+                              >
+                                {link.title}
+                              </Link>
+                            </li>
+                          ))}
+                        </ul>
+                      </div>
                     ))}
                   </div>
                 ))}

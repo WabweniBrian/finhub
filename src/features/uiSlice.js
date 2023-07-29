@@ -3,6 +3,8 @@ import { createSlice } from "@reduxjs/toolkit";
 const initialState = {
   isDropdownOpen: false,
   isSidebarOpen: false,
+  isSidebarReduced: false,
+  isNotificationsOpen: false,
 };
 
 const uiSlice = createSlice({
@@ -27,6 +29,21 @@ const uiSlice = createSlice({
     toggleSidebar: (state) => {
       state.isSidebarOpen = !state.isSidebarOpen;
     },
+    toggleSidebarWidth: (state) => {
+      state.isSidebarReduced = !state.isSidebarReduced;
+    },
+    expandWidth: (state) => {
+      state.isSidebarReduced = false;
+    },
+    openNotifications: (state) => {
+      state.isNotificationsOpen = true;
+    },
+    closeNotifications: (state) => {
+      state.isNotificationsOpen = false;
+    },
+    toggleNotifications: (state) => {
+      state.isNotificationsOpen = !state.isNotificationsOpen;
+    },
   },
 });
 
@@ -38,7 +55,12 @@ export const {
   openDropdown,
   closeDropdown,
   toggleDropdown,
+  openNotifications,
+  closeNotifications,
+  toggleNotifications,
   openSidebar,
   closeSidebar,
   toggleSidebar,
+  toggleSidebarWidth,
+  expandWidth,
 } = uiSlice.actions;

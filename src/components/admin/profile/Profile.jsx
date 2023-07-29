@@ -32,7 +32,7 @@ const Profile = () => {
               value={user.username}
               name="username"
               onChange={handleChange}
-              className="pl-8"
+              className="pl-8 border-gray-300"
             />
           </div>
         </div>
@@ -46,7 +46,7 @@ const Profile = () => {
               value={user.email}
               name="email"
               onChange={handleChange}
-              className="pl-8"
+              className="pl-8 border-gray-300"
             />
           </div>
         </div>
@@ -60,7 +60,7 @@ const Profile = () => {
             value={user.phone}
             name="phone"
             onChange={handleChange}
-            className="pl-8"
+            className="pl-8 border-gray-300"
           />
         </div>
       </div>

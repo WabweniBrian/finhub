@@ -1,120 +1,125 @@
-import { useEffect } from "react";
-import { useState } from "react";
-import { FaBars, FaTimes } from "react-icons/fa";
-import { NavLink, Link } from "react-router-dom";
-
-const navbarLinks = [
-  {
-    id: 1,
-    name: "home",
-    url: "/",
-  },
-  {
-    id: 2,
-    name: "services",
-    url: "/services",
-  },
-  {
-    id: 3,
-    name: "my bookings",
-    url: "/bookings",
-  },
-  {
-    id: 4,
-    name: "contact us",
-    url: "/contact",
-  },
-];
+/* eslint-disable react-hooks/exhaustive-deps */
+import { motion } from "framer-motion";
+import { BiBell, BiChevronDown, BiMenu, BiSearchAlt } from "react-icons/bi";
+import { useDispatch, useSelector } from "react-redux";
+import {
+  closeDropdown,
+  closeNotifications,
+  openSidebar,
+  toggleDropdown,
+  toggleNotifications,
+  toggleSidebarWidth,
+  uiStore,
+} from "../../features/uiSlice";
+import Dropdown from "./Dropdown";
+import { Link } from "react-router-dom";
+import { useRef } from "react";
+import Tooltip from "./Tooltip";
+import { FiMoon, FiSun } from "react-icons/fi";
+import Notifications from "./Notifications";
 
 const Navbar = () => {
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const [slideNavbar, setSlideNavbar] = useState(false);
+  const { isSidebarReduced } = useSelector(uiStore);
+  const dispatch = useDispatch();
+  const commandButtonRef = useRef(null);
 
-  const toggleMenu = () => {
-    setIsMenuOpen(!isMenuOpen);
-  };
-  const closeMenu = () => {
-    setIsMenuOpen(false);
+  const handleClose = (e) => {
+    if (!e.target.classList.contains("dropdown-btn")) {
+      dispatch(closeDropdown());
+    }
+    if (!e.target.classList.contains("notification-btn")) {
+      dispatch(closeNotifications());
+    }
   };
 
-  window.addEventListener("scroll", () => {
-    window.scrollY > 0 ? setSlideNavbar(true) : setSlideNavbar(false);
-  });
+  const handleClick = () => {
+    const event = new KeyboardEvent("keydown", {
+      ctrlKey: true,
+      key: "k",
+    });
+
+    document.dispatchEvent(event);
+  };
 
   return (
-    <nav
-      className={`navbar fixed  w-full top-0 left-0 z-[99] py-1 bg-white/80 backdrop-blur-sm ${
-        slideNavbar && "scrolled"
-      }`}
+    <div
+      className="fixed z-50 px-3 py-2 bg-white navbar lg:px-6"
+      style={{
+        width: isSidebarReduced ? "calc(100vw - 60px)" : "calc(100vw - 250px)",
+      }}
+      onClick={handleClose}
     >
-      <div className="flex items-center justify-between max-w-6xl mx-auto px-2">
-        <Link to="/">
-          <img src="/images/logo2.png" alt="Logo" className="w-20" />
-        </Link>
-
-        {/* Toggle Button */}
-        <div>
-          <button
-            className="p-2 rounded-lg toggle cursor-default sm:cursor-pointer feather-menu hover:bg-hover-bg md:hidden"
-            onClick={toggleMenu}
+      <div className="flex-center-between">
+        <div className="gap-1 flex-align-center md:gap-3">
+          <Link to="/" className="p-2 lg:hidden flex-shrink-0 !opacity-100">
+            <img src="/Logo.png" alt="logo" className="w-8" />
+          </Link>
+          <div
+            className="icon-box lg:hidden"
+            onClick={() => dispatch(openSidebar())}
           >
-            {isMenuOpen ? <FaTimes /> : <FaBars />}
-          </button>
+            <BiMenu className="text-lg" />
+          </div>
+          <Tooltip text="Menu toggle" position="right">
+            <div
+              className="icon-box !hidden lg:!grid"
+              onClick={() => dispatch(toggleSidebarWidth())}
+            >
+              <BiMenu className="text-lg" />
+            </div>
+          </Tooltip>
         </div>
 
-        {/* Primary Menu */}
-        <ul className="hidden space-x-10 md:flex">
-          {navbarLinks.map((link) => (
-            <li className="capitalize nav-link" key={link.id}>
-              <NavLink to={link.url}>{link.name}.</NavLink>
-            </li>
-          ))}
-        </ul>
-
-        {/* Mobile Menu */}
-        <ul
-          className={`absolute left-0 flex bg-white shadow flex-col w-full p-0 overflow-hidden transition-all duration-300 mobile-menu md:hidden top-full max-h-0 ${
-            isMenuOpen && "showMenu"
-          }`}
-        >
-          {navbarLinks.map((link) => (
-            <li
-              className="capitalize nav-link"
-              key={link.id}
-              onClick={closeMenu}
-            >
-              <NavLink to={link.url}>{link.name}.</NavLink>
-            </li>
-          ))}
-          <div className="mt-3">
-            <Link to="/login" className="btn btn-primary">
-              Login
-            </Link>
-
-            <Link
-              to="/register"
-              className="btn border border-primary text-primary ml-2"
-            >
-              Register
-            </Link>
-          </div>
-        </ul>
-
-        {/* Right Menu */}
-        <div className="hidden md:flex-align-center gap-x-2">
-          <Link to="/login" className="btn btn-primary">
-            Login
-          </Link>
-
-          <Link
-            to="/register"
-            className="btn border border-primary text-primary"
+        <div className="flex-align-center gap-3">
+          <button
+            ref={commandButtonRef}
+            className="btn hidden border border-primary text-primary shadow shadow-primary/30 md:flex-align-center gap-x-2"
+            onClick={handleClick}
           >
-            Register
-          </Link>
+            <div className="flex-shrink-0">
+              <BiSearchAlt />
+            </div>
+            <div className="flex-shrink-0">
+              <span>Ctrl + k</span>
+            </div>
+          </button>
+          <div className="flex-align-center gap-x-3 md:gap-x-1">
+            {/*---------------------- Notifications toggle------------------------------------------------ */}
+            <Tooltip text="Notifications" position="bottom">
+              <div
+                className="icon-box !opacity-100 relative notification-btn"
+                onClick={() => dispatch(toggleNotifications())}
+              >
+                <div className="relative">
+                  <BiBell className="notification-btn text-muted" />
+                  <div className="absolute top-0 right-0 w-2 h-2 rounded-full bg-red-600 notification-btn"></div>
+                </div>
+                <Notifications />
+              </div>
+            </Tooltip>
+            {/*------------------------------- Profile Dropdown toggle-------------------------------------------- */}
+            <div className="relative lg:mt-0  md:pl-4 z-50">
+              <Tooltip text="Profile" position="bottom">
+                <div
+                  className="absolute top-0 left-0 w-full h-full dropdown-btn sm:cursor-pointer"
+                  onClick={() => dispatch(toggleDropdown())}
+                ></div>
+                <div className="flex-shrink-0 space-x-1 flex-align-center">
+                  <motion.img
+                    src="/images/avatar.png"
+                    alt=""
+                    className="w-8 h-8 rounded-full dropdown-btn"
+                    whileTap={{ scale: 0.5 }}
+                  />
+                  <BiChevronDown className="dropdown-btn" />
+                </div>
+              </Tooltip>
+              <Dropdown />
+            </div>
+          </div>
         </div>
       </div>
-    </nav>
+    </div>
   );
 };
 

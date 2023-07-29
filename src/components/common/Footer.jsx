@@ -4,9 +4,9 @@ const Footer = () => {
   return (
     <div className="mt-6">
       <p className="text-center  text-muted pb-2">
-        Copyright &copy;{new Date().getFullYear()} | Brought To You by{" "}
+        Copyright &copy;{new Date().getFullYear()} | Powered by{" "}
         <Link to="/" className="text-primary !opacity-100">
-          STL
+          FinHub
         </Link>
       </p>
     </div>

@@ -28,7 +28,7 @@ const Password = () => {
               value={password.old}
               name="old"
               onChange={handleChange}
-              className="pl-8"
+              className="pl-8 border-gray-300"
             />
           </div>
         </div>
@@ -42,7 +42,7 @@ const Password = () => {
               value={password.new}
               name="new"
               onChange={handleChange}
-              className="pl-8"
+              className="pl-8 border-gray-300"
             />
           </div>
         </div>
@@ -56,7 +56,7 @@ const Password = () => {
             value={password.confirm}
             name="confirm"
             onChange={handleChange}
-            className="pl-8"
+            className="pl-8 border-gray-300"
           />
         </div>
       </div>

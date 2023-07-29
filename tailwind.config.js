@@ -19,7 +19,7 @@ module.exports = {
         questrial: "Questrial",
       },
       colors: {
-        primary: "#ef4444",
+        primary: "#2B5BBA",
         secondary: "#4EC579",
         tertiary: "#FF6370",
         secondaryYellow: "#F4CC0A",
@@ -27,7 +27,8 @@ module.exports = {
         "main-bg": "#f5f5f9",
       },
       gridTemplateColumns: {
-        "16-auto": "250px calc(100% - 250px)",
+        "250-auto": "250px calc(100% - 250px)",
+        "60-auto": "60px calc(100% - 60px)",
         "minmax-uto-200": "repeat(auto-fit, minmax(200px, 1fr))",
       },
     },
@@ -43,7 +44,7 @@ module.exports = {
           transition: "all 0.3s ease-in-out",
         },
         ".input-shadow": {
-          boxShadow: "0 0 0 1000px #f5f5f9 inset !important",
+          boxShadow: "0 0 0 1000px #fff inset !important",
         },
         ".inputAutofillColor": {
           "-webkit-text-fill-color": "#ccc",

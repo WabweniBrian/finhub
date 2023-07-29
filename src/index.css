@@ -1,4 +1,4 @@
-@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400&display=swap");
+/* @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400&display=swap"); */
 
 @tailwind base;
 @tailwind components;
@@ -22,7 +22,7 @@ html {
 }
 
 body {
-  @apply font-poppins text-slate-600 font-light;
+  @apply font-questrial text-slate-600;
 }
 
 img {
@@ -48,7 +48,11 @@ a.btn {
 }
 
 .card {
-  @apply p-4 bg-white border rounded-lg shadow;
+  @apply p-4 bg-white border rounded-lg;
+}
+
+button:disabled {
+  @apply opacity-50;
 }
 
 .btn {
@@ -85,19 +89,19 @@ a.btn {
 
 /* Modals*/
 .modal {
-  @apply fixed top-0 left-0 z-[999] w-full h-full opacity-0 pointer-events-none bg-black/50 lg:static lg:opacity-100 lg:pointer-events-auto lg:bg-transparent transition-opacity duration-300;
+  @apply fixed top-0 left-0 z-[99] w-full h-full opacity-0 pointer-events-none bg-black/50 lg:static lg:opacity-100 lg:pointer-events-auto lg:bg-transparent transition-a;
 }
 
 .dialog {
-  @apply absolute text-[14px] left-0 px-2 top-0 max-w-[250px] lg:overflow-hidden overflow-auto lg:hover:overflow-auto w-full h-full bg-[#222d32] text-slate-300 -translate-x-[500px] lg:fixed lg:translate-x-0 lg:border-r transition-a;
+  @apply absolute text-[15px] left-0 px-2 top-0 max-w-[250px] bg-white z-[99]  w-full h-full -translate-x-[500px] lg:fixed lg:translate-x-0 lg:border-r transition-a;
 }
 
 .dialog a {
-  @apply !opacity-100;
+  @apply rounded-md;
 }
 
 .dialog a.active {
-  @apply bg-[#334046] relative before:absolute before:w-[3px] before:h-full before:bg-primary before:left-0 before:top-0;
+  @apply bg-primary text-white;
 }
 
 .modal.open,
@@ -116,22 +120,12 @@ a.btn {
 input,
 select,
 textarea {
-  @apply flex h-9 w-full  !rounded-md !border !border-gray-300 bg-white px-3 py-1 !shadow-sm transition-colors placeholder:text-slate-400 focus-visible:!border-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:!ring-primary disabled:cursor-not-allowed disabled:opacity-50;
-}
-
-input.error,
-select.error,
-textarea.error {
-  @apply !border-red-500 focus:ring-0;
-}
-
-textarea {
-  @apply h-20;
+  @apply px-3 py-2 border-gray-300 outline-none transition-a w-full text-base !rounded-md autofill:input-shadow autofill:!ring-2 autofill:!ring-primary;
 }
 
 input[type="checkbox"],
 input[type="radio"] {
-  @apply !w-5 !h-5;
+  @apply !w-5 !h-5 border-gray-300;
 }
 
 input[type="radio"] {
@@ -144,6 +138,25 @@ input[type="radio"]:checked {
 }
 
 /* ------------------------------------ Custom Styles--------------------------------------------------------------------------- */
+/* Sidebar Submenu */
+
+.sub-menu li {
+  @apply relative sm:cursor-pointer;
+}
+
+.sub-menu li a {
+  @apply block py-2 text-sm text-slate-400 before:!hidden after:absolute after:w-2 after:h-2 after:border after:rounded-full after:-left-5 after:top-1/2 after:-translate-y-1/2 after:border-slate-300;
+}
+
+.sub-menu li a.active {
+  @apply after:border-0 after:bg-primary !bg-inherit !text-primary;
+}
+
+.sub-menu li:hover a,
+.sub-menu li.active a {
+  @apply text-primary;
+}
+
 /* Tooltip */
 .tooltip-enter {
   opacity: 0;
@@ -165,11 +178,11 @@ input[type="radio"]:checked {
 
 /* React Tabs */
 .react-tabs__tab-list {
-  @apply !border-slate-300;
+  @apply !border-slate-300 flex-align-center gap-x-4 border-b;
 }
 
 .react-tabs__tab {
-  @apply !border-0;
+  @apply !border-0 cursor-pointer  focus-visible:!outline-none;
 }
 
 .react-tabs__tab--selected {
@@ -289,93 +302,4 @@ table td {
 
 .wizard-step:last-child:before {
   display: none;
-}
-
-/* ---------------------------------------Public Section-------------------------------------------------------------- */
-.navbar.scrolled {
-  @apply shadow bg-white/80 backdrop-blur-lg text-inherit;
-  animation: scroll 0.3s ease-in-out;
-}
-
-@keyframes scroll {
-  0% {
-    opacity: 0;
-    transform: translateY(-100px);
-  }
-  100% {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-.nav-link {
-  @apply py-2;
-}
-
-.nav-link a {
-  @apply hover:!text-primary !opacity-100 relative before:absolute before:w-1/2 before:h-[2px] before:bg-primary before:-bottom-1 before:left-0 before:scale-0 hover:before:scale-100 before:transition-all before:duration-300;
-}
-
-.nav-link a.active {
-  @apply before:!scale-100 !text-primary;
-}
-
-.showMenu {
-  @apply max-h-[100vh] p-4;
-}
-
-/* Swiper */
-.swiper-pagination {
-  z-index: 99 !important;
-}
-.swiper-pagination-bullet {
-  background-color: #fff !important;
-  width: 0.8rem !important;
-  height: 0.8rem !important;
-  box-shadow: 3px 3px 20px rgba(0, 0, 0, 0.8);
-  margin-top: -1rem !important;
-}
-
-/* Footer */
-
-footer {
-  @apply text-sm;
-}
-
-footer a {
-  @apply hover:!text-primary transition-a hover:ml-1;
-}
-
-/* ------------------Top Routes section------------------ */
-.route:nth-child(odd) {
-  @apply float-left clear-right mr-[220px] translate-x-2 sm:!translate-x-0 sm:mr-[235px];
-}
-
-.route:nth-child(even) {
-  @apply float-right -ml-3 -translate-x-[9px] sm:!translate-x-0 clear-left sm:-ml-4;
-}
-
-.route {
-  @apply relative before:absolute before:w-3 before:h-3 before:bg-red-500 before:rounded-full;
-}
-
-.route:nth-child(odd)::before {
-  @apply left-full ml-[4px] sm:ml-[4px];
-}
-.route:nth-child(even)::before {
-  @apply right-full mr-[2px] sm:mr-[4px];
-}
-
-@media screen and (max-width: 380px) {
-  .route:nth-child(odd) {
-    @apply float-left clear-right mr-[140px] max-w-[140px] -translate-x-2 sm:!translate-x-0 sm:mr-[235px];
-  }
-
-  .route:nth-child(even) {
-    @apply float-right -ml-3 translate-x-[8px] max-w-[140px] sm:!translate-x-0 clear-left sm:-ml-4;
-  }
-
-  .route span {
-    @apply !text-xs;
-  }
 }

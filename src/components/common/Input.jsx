@@ -1,67 +1,104 @@
 import React, { useState } from "react";
+import { FiInfo } from "react-icons/fi";
 
 const Input = ({
   label,
   value,
+  name,
+  id,
   onChange,
-  size = "medium",
-  variant = "default",
+  onBlur,
+  type = "text",
   icon,
+  invalid,
+  multline = false,
+  cols,
+  rows,
 }) => {
   const [isFocused, setIsFocused] = useState(false);
-
-  const handleInputChange = (event) => {
-    onChange(event.target.value);
-  };
 
   const handleInputFocus = () => {
     setIsFocused(true);
   };
 
-  const handleInputBlur = () => {
+  const handleInputBlur = (e) => {
     setIsFocused(false);
+    onBlur(e);
   };
 
   const getInputClasses = () => {
-    let inputClasses = "border";
-    if (variant === "outlined") {
-      inputClasses += " border-gray-300";
-    } else {
-      inputClasses += " border-transparent";
-    }
+    let inputClasses = `px-3 py-2 border-gray-300 outline-none transition-a w-full text-base !rounded-md autofill:input-shadow autofill:!ring-2 autofill:!ring-primary ${
+      icon && "!pl-8"
+    }`;
+
     if (isFocused) {
-      inputClasses += " focus:ring focus:ring-teal-400";
+      inputClasses += " focus:ring-2 !border-transparent focus:ring-primary";
     }
-    if (size === "small") {
-      inputClasses += " px-2 py-1 text-sm";
-    } else if (size === "large") {
-      inputClasses += " px-4 py-2 text-lg";
-    } else {
-      inputClasses += " px-3 py-2";
+    if (invalid) {
+      inputClasses += " !ring-2 !ring-red-600 !border-transparent";
+    }
+    if (invalid && isFocused) {
+      inputClasses += " !ring-2 !ring-red-600";
     }
     return inputClasses;
   };
 
   return (
-    <div className="relative inline-block">
+    <div className="relative block">
       <label
-        className={`absolute left-3 ${
-          isFocused || value
-            ? "-top-1 text-xs text-teal-500"
-            : "top-1/2 transform -translate-y-1/2 text-sm"
+        className={`absolute z-20 top-[9px] left-2 text-[#8d9193] transition-a px-[0.15rem] pointer-events-none ${
+          (isFocused || value) &&
+          "!-top-[12px] !left-[12px] text-sm text-primary bg-white"
+        } ${invalid && "text-red-600"} ${
+          icon && "left-7"
         } transition-all duration-200`}
       >
         {label}
       </label>
-      {icon}
-      <input
-        type="text"
-        value={value}
-        onChange={handleInputChange}
-        onFocus={handleInputFocus}
-        onBlur={handleInputBlur}
-        className={getInputClasses()}
-      />
+      <div className="relative">
+        {icon && (
+          <div
+            className={`absolute top-1/2 -translate-y-1/2 left-2 ${
+              invalid && "text-red-600"
+            } ${multline && "!top-3 translate-y-0"}`}
+          >
+            {icon}
+          </div>
+        )}
+        {invalid && (
+          <div
+            className={`absolute top-1/2 -translate-y-1/2 right-2 ${
+              multline && "!top-3 translate-y-0"
+            }`}
+          >
+            <FiInfo className="text-red-600" />
+          </div>
+        )}
+        {multline ? (
+          <textarea
+            cols={cols}
+            rows={rows}
+            value={value}
+            id={id}
+            name={name}
+            onChange={onChange}
+            onFocus={handleInputFocus}
+            onBlur={handleInputBlur}
+            className={getInputClasses()}
+          />
+        ) : (
+          <input
+            type={type}
+            value={value}
+            id={id}
+            name={name}
+            onChange={onChange}
+            onFocus={handleInputFocus}
+            onBlur={handleInputBlur}
+            className={getInputClasses()}
+          />
+        )}
+      </div>
     </div>
   );
 };

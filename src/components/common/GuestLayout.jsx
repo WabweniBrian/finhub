@@ -2,20 +2,20 @@ import { Outlet } from "react-router-dom";
 
 const GuestLayout = () => {
   return (
-    <div className="relative">
-      <div className="absolute w-2/3 md:w-1/2 h-full -z-10 -skew-x-12 -left-20">
-        <div className="skew-x-0 w-full h-full">
-          <img src="/images/Background1.png" alt="" className="w-full h-full" />
+    <>
+      <div className="flex-center-center md:flex-none md:grid grid-cols-2 min-h-screen place-items-center max-w-6xl mx-auto px-4 gap-20">
+        <div className="max-w-sm mx-auto md:max-w-none w-full">
+          <Outlet />
+        </div>
+        <div className="w-full hidden md:block">
+          <img
+            src="/images/savings.png"
+            alt="Illustartion"
+            className="w-full"
+          />
         </div>
       </div>
-      <div className="min-h-screen flex-center-center pt-20 pb-10 flex-col">
-        <div className="max-w-[450px] w-[95%] mx-auto">
-          <div className="mt-4 card !bg-white/80 backdrop-blur-xl">
-            <Outlet />
-          </div>
-        </div>
-      </div>
-    </div>
+    </>
   );
 };
 

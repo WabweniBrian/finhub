@@ -9,7 +9,7 @@ const Breadcrumb = () => {
       <ol className="list-none flex items-center !text-sm">
         <li className="flex items-center">
           <Link
-            to="/admin"
+            to="/"
             className="text-primary hover:underline flex-align-center gap-x-2"
           >
             <FiHome className="mr-1" />

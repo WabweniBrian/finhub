@@ -68,7 +68,7 @@ const DatePicker = () => {
         onChange={handleInputChange}
         readOnly
         ref={inputRef}
-        className="pl-8"
+        className="pl-8 border-gray-300"
       />
       {showPicker && (
         <div

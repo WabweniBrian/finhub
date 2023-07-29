@@ -1,5 +1,7 @@
 import { useState } from "react";
 import Breadcrumb from "../../components/common/Breadcrumb";
+import ContactForm from "../../components/admin/contact/ContactForm";
+import ContactDetails from "../../components/admin/contact/ContactDetails";
 
 const Contact = () => {
   const [contact, setContact] = useState({
@@ -19,47 +21,8 @@ const Contact = () => {
         <Breadcrumb />
       </div>
       <div className="mt-4 card">
-        <form>
-          {/* Name */}
-          <div>
-            <p>Full Name</p>
-            <div className="mt-2">
-              <input
-                type="text"
-                value={contact.name}
-                name="name"
-                onChange={handleChange}
-                placeholder="Name.."
-              />
-            </div>
-          </div>
-          {/* Email */}
-          <div>
-            <p>Email Address</p>
-            <div className="mt-2">
-              <input
-                type="email"
-                value={contact.email}
-                name="email"
-                onChange={handleChange}
-                placeholder="Email.."
-              />
-            </div>
-          </div>
-          {/* Email */}
-          <div>
-            <p>Message</p>
-            <div className="mt-2">
-              <textarea
-                value={contact.message}
-                name="message"
-                onChange={handleChange}
-                placeholder="Message.."
-              />
-            </div>
-          </div>
-          <button className="btn btn-primary mt-4">Send</button>
-        </form>
+        <ContactForm />
+        <ContactDetails />
       </div>
     </div>
   );

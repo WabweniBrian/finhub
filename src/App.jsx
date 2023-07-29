@@ -1,35 +1,34 @@
 import { useState, useEffect } from "react";
 import { Routes, Route, useLocation } from "react-router-dom";
 import { Toaster } from "react-hot-toast";
-import HomeLayout from "./components/common/HomeLayout";
 import AdminLayout from "./components/common/AdminLayout";
 import {
-  AdminDashboard,
-  BusAdminDashboard,
-  ConductorDashboard,
-  BusRoutes,
-  BusOperators,
-  BusTypes,
+  Dashboard,
   Messages,
   Reports,
-  Schedule,
   Notifications,
-  Reservations,
   ProfileSettings,
   Users,
-  ManageSeats,
   Contact,
-  Buses,
+  Transactions,
+  SocialLinks,
+  About,
+  NewUser,
+  RolesPermissions,
+  Loans,
+  LoanApplications,
+  LoanRepayments,
+  LoanPlans,
+  Savings,
+  FinancialStudyMaterials,
+  FaqsInquiries,
+  LoanReports,
+  StudyMaterialReports,
+  Logs,
+  EditUser,
+  NewRole,
+  EditRole,
 } from "./pages/admin";
-import {
-  Home,
-  BookingWizard,
-  MyBookings,
-  ContactUs,
-  Search,
-  Services,
-  Track,
-} from "./pages/public";
 import NotFound from "./pages/NotFound";
 import BackToTopButton from "./components/common/BackToTopButton";
 import NProgress from "nprogress";
@@ -56,18 +55,6 @@ function App() {
     window.scrollTo(0, 0);
   }, [route]);
 
-  const role = "admin";
-
-  const dashboard = () => {
-    if (role === "admin") {
-      return <AdminDashboard />;
-    } else if (role === "bus-admin") {
-      return <BusAdminDashboard />;
-    } else {
-      return <ConductorDashboard />;
-    }
-  };
-
   return (
     <>
       <Toaster />
@@ -76,28 +63,34 @@ function App() {
           <Route path="register" element={<Register />} />
           <Route path="login" element={<Login />} />
         </Route>
-        <Route path="/" element={<HomeLayout />}>
-          <Route index element={<Home />} />
-          <Route path="book" element={<BookingWizard />} />
-          <Route path="bookings" element={<MyBookings />} />
-          <Route path="contact" element={<ContactUs />} />
-          <Route path="search" element={<Search />} />
-          <Route path="services" element={<Services />} />
-          <Route path="track" element={<Track />} />
-        </Route>
-        <Route path="/admin/" element={<AdminLayout />}>
-          <Route index element={dashboard()} />
-          <Route path="reservations" element={<Reservations />} />
+        <Route path="/" element={<AdminLayout />}>
+          <Route index element={<Dashboard />} />
+          <Route path="transactions" element={<Transactions />} />
           <Route path="users" element={<Users />} />
-          <Route path="bus-routes" element={<BusRoutes />} />
-          <Route path="bus-operators" element={<BusOperators />} />
-          <Route path="buses" element={<Buses />} />
-          <Route path="buses/manage" element={<ManageSeats />} />
-          <Route path="bus-types" element={<BusTypes />} />
+          <Route path="users/new" element={<NewUser />} />
+          <Route path="users/:id" element={<EditUser />} />
+          <Route path="social-links" element={<SocialLinks />} />
+          <Route path="roles-permissions" element={<RolesPermissions />} />
+          <Route path="roles-permissions/new" element={<NewRole />} />
+          <Route path="roles-permissions/:id" element={<EditRole />} />
+          <Route path="loans" element={<Loans />} />
+          <Route path="loans/applications" element={<LoanApplications />} />
+          <Route path="loans/repayments" element={<LoanRepayments />} />
+          <Route path="loans/plans" element={<LoanPlans />} />
+          <Route path="savings" element={<Savings />} />
+          <Route path="study-materials" element={<FinancialStudyMaterials />} />
+          <Route path="reports/loan" element={<LoanReports />} />
+          <Route path="reports/savings" element={<Savings />} />
+          <Route
+            path="reports/study-materials"
+            element={<StudyMaterialReports />}
+          />
+          <Route path="reports/logs" element={<Logs />} />
+          <Route path="faq-inquiries" element={<FaqsInquiries />} />
           <Route path="profile" element={<ProfileSettings />} />
           <Route path="messages" element={<Messages />} />
           <Route path="reports" element={<Reports />} />
-          <Route path="schedule" element={<Schedule />} />
+          <Route path="about" element={<About />} />
           <Route path="notifications" element={<Notifications />} />
           <Route path="contact" element={<Contact />} />
         </Route>

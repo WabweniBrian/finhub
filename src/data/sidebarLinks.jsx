@@ -81,8 +81,8 @@ export const navLinks = [
             url: "/loans",
           },
           {
-            title: "Plans",
-            url: "loans/plans",
+            title: "Packages",
+            url: "loans/packages",
           },
           {
             title: "Applications",

@@ -1,5 +1,6 @@
 import React from "react";
 import Breadcrumb from "../../components/common/Breadcrumb";
+import SavingsList from "../../components/admin/savings/SavingsList";
 
 const Savings = () => {
   return (
@@ -8,7 +9,9 @@ const Savings = () => {
         <h1 className="text-2xl font-semibold">Savings</h1>
         <Breadcrumb />
       </div>
-      <div className="mt-4 card"></div>
+      <div className="mt-4 card">
+        <SavingsList />
+      </div>
     </div>
   );
 };

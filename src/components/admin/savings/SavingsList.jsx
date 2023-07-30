@@ -1,46 +1,52 @@
 import React, { useState } from "react";
-import {
-  FiEdit,
-  FiTrash,
-  FiBriefcase,
-  FiPrinter,
-  FiPlusCircle,
-} from "react-icons/fi";
-import Tooltip from "../../common/Tooltip";
 import useDataTables from "../../common/useDataTables";
-import { BiSolidFileExport } from "react-icons/bi";
 import toast from "react-hot-toast";
+import { FiEye, FiPrinter, FiTrash } from "react-icons/fi";
+import Tooltip from "../../common/Tooltip";
+import { BiSolidFileExport } from "react-icons/bi";
 
-const UsersList = () => {
+const SavingsList = () => {
   const [selectedRows, setSelectedRows] = useState([]);
   const [selectAll, setSelectAll] = useState(false);
-  const users = [
+  const savings = [
     {
       id: 1,
-      photo: "/images/avatar.png",
-      email: "test@example.com",
-      phone: "+256708210793",
-      full_name: "John Doe",
-      role: "Super Admin",
-      date_added: "08/12/2023",
+      name: "John Doe",
+      email: "johndoe@gmail.com",
+      contact: "+2562637822",
+      start_date: "03/03/2023",
+      target_amount: "5,000,000",
+      saved_amount: "3,00,000",
+      total_savings: "3,500,000",
+      duration_saved: "5 months",
+      withdraw_date: "12/12/2023",
+      status: "locked",
     },
     {
       id: 2,
-      photo: "/images/avatar.png",
-      email: "test@example.com",
-      phone: "+256708210793",
-      full_name: "Jane Doe",
-      role: "CEO",
-      date_added: "08/12/2023",
+      name: "John Doe",
+      email: "johndoe@gmail.com",
+      contact: "+2562637822",
+      start_date: "03/03/2023",
+      target_amount: "5,000,000",
+      saved_amount: "3,00,000",
+      total_savings: "3,500,000",
+      duration_saved: "5 months",
+      withdraw_date: "12/12/2023",
+      status: "locked",
     },
     {
       id: 3,
-      photo: "/images/avatar.png",
-      email: "test@example.com",
-      phone: "+256708210793",
-      full_name: "Raven Kent",
-      role: "CTO",
-      date_added: "08/12/2023",
+      name: "John Doe",
+      email: "johndoe@gmail.com",
+      contact: "+2562637822",
+      start_date: "03/03/2023",
+      target_amount: "5,000,000",
+      saved_amount: "3,00,000",
+      total_savings: "3,500,000",
+      duration_saved: "5 months",
+      withdraw_date: "12/12/2023",
+      status: "locked",
     },
   ];
   useDataTables();
@@ -57,7 +63,7 @@ const UsersList = () => {
     if (selectAll) {
       setSelectedRows([]);
     } else {
-      const allIds = users.map((user) => user.id);
+      const allIds = savings.map((saving) => saving.id);
       setSelectedRows(allIds);
     }
     setSelectAll(!selectAll);
@@ -67,14 +73,9 @@ const UsersList = () => {
     if (!confirm("Are you sure you want to delete selected rows?")) return;
     toast.success("Selected rows deleted");
   };
-
   return (
     <>
       <div className="flex-align-center gap-2 pb-2 border-b">
-        <button className="btn border border-primary shadow shadow-primary/20 text-primary flex-align-center gap-x-2">
-          <FiPlusCircle />
-          <span>New</span>
-        </button>
         <button className="btn border border-primary shadow shadow-primary/20 text-primary flex-align-center gap-x-2">
           <FiPrinter />
           <span>Print</span>
@@ -104,49 +105,46 @@ const UsersList = () => {
                 />
               </th>
               <th>ID</th>
-              <th>Photo</th>
+              <th>Name</th>
               <th>Email</th>
-              <th>Contact Info</th>
-              <th>Full Name</th>
-              <th>Role</th>
-              <th>Date Added</th>
-              <th>Operations</th>
+              <th>Phone Number</th>
+              <th>Start Date</th>
+              <th>Target Amount</th>
+              <th>Amount Saved</th>
+              <th>Total Savings (+ profits)</th>
+              <th>Duration Saved</th>
+              <th>Withdraw date</th>
+              <th>Account Status</th>
+              <th>Actions</th>
             </tr>
           </thead>
           <tbody>
-            {users.map((user) => (
-              <tr key={user.id}>
+            {savings.map((saving) => (
+              <tr key={saving.id}>
                 <td>
                   <input
                     type="checkbox"
-                    checked={selectedRows.includes(user.id)}
-                    onChange={() => handleRowSelection(user.id)}
+                    checked={selectedRows.includes(saving.id)}
+                    onChange={() => handleRowSelection(saving.id)}
                   />
                 </td>
-                <td>{user.id}</td>
+                <td>{saving.id}</td>
+                <td>{saving.name}</td>
+                <td>{saving.email}</td>
+                <td>{saving.contact} </td>
+                <td>{saving.start_date}</td>
+                <td>Ugx {saving.target_amount}</td>
+                <td>Ugx {saving.saved_amount}</td>
+                <td>Ugx {saving.total_savings}</td>
+                <td>{saving.duration_saved}</td>
+                <td>{saving.withdraw_date}</td>
+                <td>{saving.status}</td>
                 <td>
-                  <img src={user.photo} alt="" className="avatar" />
-                </td>
-                <td>{user.email}</td>
-                <td>{user.phone} </td>
-                <td>{user.full_name}</td>
-                <td>{user.role}</td>
-                <td>{user.date_added}</td>
-                <td>
-                  {/* Permissions */}
-                  <Tooltip text="Permissions">
-                    <button className="icon-box text-white !bg-cyan-600 hover:!bg-cyan-600/80 mr-2">
-                      <FiBriefcase />
+                  <Tooltip text="Details">
+                    <button className="icon-box text-white !bg-green-600 hover:!bg-green-600/80 ml-2">
+                      <FiEye />
                     </button>
                   </Tooltip>
-
-                  {/* Edit */}
-                  <Tooltip text="Edit">
-                    <button className="icon-box text-white !bg-secondary hover:!bg-secondary/80">
-                      <FiEdit />
-                    </button>
-                  </Tooltip>
-
                   {/* Delete */}
                   <Tooltip text="Delete">
                     <button className="icon-box text-white !bg-red-600 hover:!bg-red-600/80 ml-2">
@@ -163,4 +161,4 @@ const UsersList = () => {
   );
 };
 
-export default UsersList;
+export default SavingsList;

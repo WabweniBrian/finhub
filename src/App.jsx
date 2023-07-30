@@ -18,7 +18,7 @@ import {
   Loans,
   LoanApplications,
   LoanRepayments,
-  LoanPlans,
+  LoanPackages,
   Savings,
   FinancialStudyMaterials,
   FaqsInquiries,
@@ -28,6 +28,8 @@ import {
   EditUser,
   NewRole,
   EditRole,
+  LoanApplicationFormWizard,
+  NewStudyMaterial,
 } from "./pages/admin";
 import NotFound from "./pages/NotFound";
 import BackToTopButton from "./components/common/BackToTopButton";
@@ -76,9 +78,11 @@ function App() {
           <Route path="loans" element={<Loans />} />
           <Route path="loans/applications" element={<LoanApplications />} />
           <Route path="loans/repayments" element={<LoanRepayments />} />
-          <Route path="loans/plans" element={<LoanPlans />} />
+          <Route path="loans/packages" element={<LoanPackages />} />
+          <Route path="loans/new" element={<LoanApplicationFormWizard />} />
           <Route path="savings" element={<Savings />} />
           <Route path="study-materials" element={<FinancialStudyMaterials />} />
+          <Route path="study-materials/new" element={<NewStudyMaterial />} />
           <Route path="reports/loan" element={<LoanReports />} />
           <Route path="reports/savings" element={<Savings />} />
           <Route

@@ -219,6 +219,10 @@ table th,
 table td {
   @apply whitespace-nowrap text-[14px];
 }
+table th:not(table th:first-child),
+table td:not(table td:first-child) {
+  @apply border-l;
+}
 
 .table-wrapper tr {
   @apply table-row;
@@ -302,4 +306,14 @@ table td {
 
 .wizard-step:last-child:before {
   display: none;
+}
+
+.pending {
+  @apply bg-secondaryYellow/20 text-secondaryYellow;
+}
+.completed {
+  @apply bg-secondary/20 text-secondary;
+}
+.failed {
+  @apply bg-tertiary/20 text-tertiary;
 }

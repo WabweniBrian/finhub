@@ -1,46 +1,37 @@
 import React, { useState } from "react";
+import useDataTables from "../../common/useDataTables";
+import toast from "react-hot-toast";
 import {
   FiEdit,
-  FiTrash,
-  FiBriefcase,
-  FiPrinter,
+  FiEye,
   FiPlusCircle,
+  FiPrinter,
+  FiTrash,
 } from "react-icons/fi";
 import Tooltip from "../../common/Tooltip";
-import useDataTables from "../../common/useDataTables";
 import { BiSolidFileExport } from "react-icons/bi";
-import toast from "react-hot-toast";
 
-const UsersList = () => {
+const LoanPackagesList = () => {
   const [selectedRows, setSelectedRows] = useState([]);
   const [selectAll, setSelectAll] = useState(false);
-  const users = [
+  const packages = [
     {
       id: 1,
-      photo: "/images/avatar.png",
-      email: "test@example.com",
-      phone: "+256708210793",
-      full_name: "John Doe",
-      role: "Super Admin",
-      date_added: "08/12/2023",
+      name: "Students Super",
+      maximum_amount: "1,000,000",
+      interest: "3%",
     },
     {
       id: 2,
-      photo: "/images/avatar.png",
-      email: "test@example.com",
-      phone: "+256708210793",
-      full_name: "Jane Doe",
-      role: "CEO",
-      date_added: "08/12/2023",
+      name: "Students Max",
+      maximum_amount: "5,000,000",
+      interest: "3%",
     },
     {
       id: 3,
-      photo: "/images/avatar.png",
-      email: "test@example.com",
-      phone: "+256708210793",
-      full_name: "Raven Kent",
-      role: "CTO",
-      date_added: "08/12/2023",
+      name: "Students Max Pro",
+      maximum_amount: "10,000,000",
+      interest: "3%",
     },
   ];
   useDataTables();
@@ -57,7 +48,7 @@ const UsersList = () => {
     if (selectAll) {
       setSelectedRows([]);
     } else {
-      const allIds = users.map((user) => user.id);
+      const allIds = packages.map((loan_package) => loan_package.id);
       setSelectedRows(allIds);
     }
     setSelectAll(!selectAll);
@@ -67,7 +58,6 @@ const UsersList = () => {
     if (!confirm("Are you sure you want to delete selected rows?")) return;
     toast.success("Selected rows deleted");
   };
-
   return (
     <>
       <div className="flex-align-center gap-2 pb-2 border-b">
@@ -104,49 +94,33 @@ const UsersList = () => {
                 />
               </th>
               <th>ID</th>
-              <th>Photo</th>
-              <th>Email</th>
-              <th>Contact Info</th>
-              <th>Full Name</th>
-              <th>Role</th>
-              <th>Date Added</th>
-              <th>Operations</th>
+              <th>Package Name</th>
+              <th>Maximum Amount</th>
+              <th>Interest (P.A)</th>
+              <th>Actions</th>
             </tr>
           </thead>
           <tbody>
-            {users.map((user) => (
-              <tr key={user.id}>
+            {packages.map((loan_package) => (
+              <tr key={loan_package.id}>
                 <td>
                   <input
                     type="checkbox"
-                    checked={selectedRows.includes(user.id)}
-                    onChange={() => handleRowSelection(user.id)}
+                    checked={selectedRows.includes(loan_package.id)}
+                    onChange={() => handleRowSelection(loan_package.id)}
                   />
                 </td>
-                <td>{user.id}</td>
+                <td>{loan_package.id}</td>
+                <td>{loan_package.name}</td>
+                <td>Ugx {loan_package.maximum_amount}</td>
+                <td>{loan_package.interest}</td>
                 <td>
-                  <img src={user.photo} alt="" className="avatar" />
-                </td>
-                <td>{user.email}</td>
-                <td>{user.phone} </td>
-                <td>{user.full_name}</td>
-                <td>{user.role}</td>
-                <td>{user.date_added}</td>
-                <td>
-                  {/* Permissions */}
-                  <Tooltip text="Permissions">
-                    <button className="icon-box text-white !bg-cyan-600 hover:!bg-cyan-600/80 mr-2">
-                      <FiBriefcase />
-                    </button>
-                  </Tooltip>
-
                   {/* Edit */}
                   <Tooltip text="Edit">
-                    <button className="icon-box text-white !bg-secondary hover:!bg-secondary/80">
+                    <button className="icon-box text-white !bg-green-600 hover:!bg-green-600/80 ml-2">
                       <FiEdit />
                     </button>
                   </Tooltip>
-
                   {/* Delete */}
                   <Tooltip text="Delete">
                     <button className="icon-box text-white !bg-red-600 hover:!bg-red-600/80 ml-2">
@@ -163,4 +137,4 @@ const UsersList = () => {
   );
 };
 
-export default UsersList;
+export default LoanPackagesList;

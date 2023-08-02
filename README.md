@@ -1,3 +1,3 @@
-# SIMBULA TUDENDE LIMITED (STL)
+# FINHUB
 
-Book Bus Tickets online with STL
+A platform for student loans and savings

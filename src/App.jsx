@@ -5,7 +5,6 @@ import AdminLayout from "./components/common/AdminLayout";
 import {
   Dashboard,
   Messages,
-  Reports,
   Notifications,
   ProfileSettings,
   Users,
@@ -30,6 +29,8 @@ import {
   EditRole,
   LoanApplicationFormWizard,
   NewStudyMaterial,
+  EditStudyMaterial,
+  SavingsReports,
 } from "./pages/admin";
 import NotFound from "./pages/NotFound";
 import BackToTopButton from "./components/common/BackToTopButton";
@@ -83,8 +84,9 @@ function App() {
           <Route path="savings" element={<Savings />} />
           <Route path="study-materials" element={<FinancialStudyMaterials />} />
           <Route path="study-materials/new" element={<NewStudyMaterial />} />
+          <Route path="study-materials/:slug" element={<EditStudyMaterial />} />
           <Route path="reports/loan" element={<LoanReports />} />
-          <Route path="reports/savings" element={<Savings />} />
+          <Route path="reports/savings" element={<SavingsReports />} />
           <Route
             path="reports/study-materials"
             element={<StudyMaterialReports />}
@@ -93,7 +95,6 @@ function App() {
           <Route path="faq-inquiries" element={<FaqsInquiries />} />
           <Route path="profile" element={<ProfileSettings />} />
           <Route path="messages" element={<Messages />} />
-          <Route path="reports" element={<Reports />} />
           <Route path="about" element={<About />} />
           <Route path="notifications" element={<Notifications />} />
           <Route path="contact" element={<Contact />} />

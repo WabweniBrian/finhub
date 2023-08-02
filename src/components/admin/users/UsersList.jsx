@@ -10,6 +10,7 @@ import Tooltip from "../../common/Tooltip";
 import useDataTables from "../../common/useDataTables";
 import { BiSolidFileExport } from "react-icons/bi";
 import toast from "react-hot-toast";
+import { Link } from "react-router-dom";
 
 const UsersList = () => {
   const [selectedRows, setSelectedRows] = useState([]);
@@ -70,11 +71,14 @@ const UsersList = () => {
 
   return (
     <>
-      <div className="flex-align-center gap-2 pb-2 border-b">
-        <button className="btn border border-primary shadow shadow-primary/20 text-primary flex-align-center gap-x-2">
+      <div className="flex-align-center flex-wrap gap-2 pb-2 border-b">
+        <Link
+          to="new"
+          className="btn border border-primary shadow shadow-primary/20 text-primary flex-align-center gap-x-2"
+        >
           <FiPlusCircle />
           <span>New</span>
-        </button>
+        </Link>
         <button className="btn border border-primary shadow shadow-primary/20 text-primary flex-align-center gap-x-2">
           <FiPrinter />
           <span>Print</span>
@@ -133,18 +137,14 @@ const UsersList = () => {
                 <td>{user.role}</td>
                 <td>{user.date_added}</td>
                 <td>
-                  {/* Permissions */}
-                  <Tooltip text="Permissions">
-                    <button className="icon-box text-white !bg-cyan-600 hover:!bg-cyan-600/80 mr-2">
-                      <FiBriefcase />
-                    </button>
-                  </Tooltip>
-
                   {/* Edit */}
                   <Tooltip text="Edit">
-                    <button className="icon-box text-white !bg-secondary hover:!bg-secondary/80">
+                    <Link
+                      to={`${user.id}`}
+                      className="icon-box text-white !bg-secondary hover:!bg-secondary/80"
+                    >
                       <FiEdit />
-                    </button>
+                    </Link>
                   </Tooltip>
 
                   {/* Delete */}

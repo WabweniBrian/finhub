@@ -15,7 +15,6 @@ import Dropdown from "./Dropdown";
 import { Link } from "react-router-dom";
 import { useRef } from "react";
 import Tooltip from "./Tooltip";
-import { FiMoon, FiSun } from "react-icons/fi";
 import Notifications from "./Notifications";
 
 const Navbar = () => {
@@ -43,7 +42,7 @@ const Navbar = () => {
 
   return (
     <div
-      className="fixed z-50 px-3 py-2 bg-white navbar lg:px-6"
+      className="fixed z-30 px-3 py-2 bg-white navbar lg:px-6"
       style={{
         width: isSidebarReduced ? "calc(100vw - 60px)" : "calc(100vw - 250px)",
       }}
@@ -85,18 +84,20 @@ const Navbar = () => {
           </button>
           <div className="flex-align-center gap-x-3 md:gap-x-1">
             {/*---------------------- Notifications toggle------------------------------------------------ */}
-            <Tooltip text="Notifications" position="bottom">
+            <div className="relative">
               <div
-                className="icon-box !opacity-100 relative notification-btn"
+                className="icon-box !opacity-100 notification-btn"
                 onClick={() => dispatch(toggleNotifications())}
               >
-                <div className="relative">
-                  <BiBell className="notification-btn text-muted" />
-                  <div className="absolute top-0 right-0 w-2 h-2 rounded-full bg-red-600 notification-btn"></div>
-                </div>
-                <Notifications />
+                <Tooltip text="Notifications" position="bottom">
+                  <div className="relative">
+                    <BiBell className="notification-btn text-muted" />
+                    <div className="absolute top-0 right-0 w-2 h-2 rounded-full bg-red-600 notification-btn"></div>
+                  </div>
+                </Tooltip>
               </div>
-            </Tooltip>
+              <Notifications />
+            </div>
             {/*------------------------------- Profile Dropdown toggle-------------------------------------------- */}
             <div className="relative lg:mt-0  md:pl-4 z-50">
               <Tooltip text="Profile" position="bottom">

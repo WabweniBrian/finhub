@@ -3,7 +3,13 @@ import { BsChevronExpand, BsSearch } from "react-icons/bs";
 import { FiCheck } from "react-icons/fi";
 import { motion } from "framer-motion";
 
-const Select = ({ options, onSelect }) => {
+const Select = ({
+  options,
+  onSelect,
+  icon,
+  text = "Select an option",
+  invalid = false,
+}) => {
   const [isOpen, setIsOpen] = useState(false);
   const [selectedOption, setSelectedOption] = useState("");
   const [searchValue, setSearchValue] = useState("");
@@ -50,17 +56,38 @@ const Select = ({ options, onSelect }) => {
     <div ref={selectRef} className="relative !font-questrial">
       <button
         type="button"
-        className="relative z-10 flex items-center justify-between w-full py-2 pl-3 pr-4 text-left bg-white border border-gray-300 rounded-md cursor-pointer focus:outline-none focus:ring-2 focus:ring-primary focus:!border-transparent"
+        className={`relative z-10  flex items-center justify-between w-full py-2 pl-3 pr-4 text-left bg-white border border-gray-300 rounded-md cursor-pointer focus:outline-none focus:ring-2 focus:ring-primary focus:!border-transparent ${
+          icon ? "pl-8" : ""
+        } ${invalid ? "border-2 border-red-600" : ""}`}
         onClick={handleToggle}
       >
+        {icon && (
+          <div
+            className={`absolute top-1/2 -translate-y-1/2 left-2 ${
+              invalid ? "text-red-600 !opacity-100" : ""
+            }`}
+          >
+            {icon}
+          </div>
+        )}
         <span className="mr-2 ">
-          {selectedOption ? selectedOption.label : "Select an option"}
+          {selectedOption ? (
+            selectedOption.label
+          ) : (
+            <span
+              className={`text-muted ${
+                invalid ? "text-red-600 !opacity-100" : ""
+              }`}
+            >
+              {text}
+            </span>
+          )}
         </span>
         <BsChevronExpand />
       </button>
       {isOpen && (
         <motion.div
-          className="absolute z-20 w-full mt-1 bg-white border border-gray-300 rounded-md shadow-lg"
+          className="absolute z-50 w-full mt-1 bg-white border border-gray-300 rounded-md shadow-lg"
           initial="hidden"
           animate="visible"
           exit="hidden"

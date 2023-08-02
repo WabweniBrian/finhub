@@ -21,7 +21,7 @@ class LineChart extends React.Component {
   render() {
     return (
       <div className="card h-[380px] md:h-[350px]">
-        <h1 className="text-2xl font-semibold">Income Statistics</h1>
+        <h1 className="text-2xl font-semibold">Loan Income Statistics</h1>
         <ReactApexChart
           options={this.state.chartOptions}
           series={this.state.chartData}

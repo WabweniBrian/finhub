@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { BiSearchAlt } from "react-icons/bi";
-import { FiPlusCircle } from "react-icons/fi";
+import { FiEdit, FiPlusCircle } from "react-icons/fi";
 import { Link } from "react-router-dom";
 
 const StudyMaterialList = () => {
@@ -59,10 +59,13 @@ const StudyMaterialList = () => {
     <div>
       <div className="flex-center-between flex-col sm:flex-row pb-2 border-b">
         <div className="flex-1 w-full sm:w-fit">
-          <button className="btn border border-primary shadow shadow-primary/20 text-primary flex-align-center gap-x-2">
+          <Link
+            to="new"
+            className="btn w-fit border border-primary shadow shadow-primary/20 text-primary flex-align-center gap-x-2"
+          >
             <FiPlusCircle />
             <span>New Article</span>
-          </button>
+          </Link>
         </div>
         <div className="flex-1 w-full sm:w-fit">
           <div className="mt-2 relative">
@@ -80,15 +83,22 @@ const StudyMaterialList = () => {
       </div>
       <div className="mt-4 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
         {articles.map((article) => (
-          <div className="border rounded-lg overflow-hidden group">
+          <div
+            className="border rounded-lg overflow-hidden group relative"
+            key={article.id}
+          >
+            <Link
+              to={article.slug}
+              className="icon-box absolute top-2 right-2 bg-opacity-60 z-10"
+            >
+              <FiEdit />
+            </Link>
             <div className="overflow-hidden group">
-              <Link to={`articles/${article.slug}`}>
-                <img
-                  src={article.image}
-                  alt={article.title}
-                  className="object-cover h-[250px] w-full group-hover:scale-125 transition-a"
-                />
-              </Link>
+              <img
+                src={article.image}
+                alt={article.title}
+                className="object-cover h-[250px] w-full group-hover:scale-125 transition-a"
+              />
             </div>
             <div className="p-3">
               <div className="flex-center-between">
@@ -96,12 +106,7 @@ const StudyMaterialList = () => {
                 <p className="text-sm text-muted">2hrs ago</p>
               </div>
               <div className="mt-3">
-                <Link
-                  to={`articles/${article.slug}`}
-                  className="group-hover:text-primary text-xl font-semibold"
-                >
-                  {article.title}
-                </Link>
+                <h1 className="text-xl font-semibold">{article.title}</h1>
                 <p className="text-muted mt-3">{article.description}</p>
               </div>
               <div className="mt-4 flex-align-center gap-x-3">

@@ -1,11 +1,13 @@
 import React, { useState } from "react";
 import useDataTables from "../../common/useDataTables";
 import toast from "react-hot-toast";
-import { FiCheck, FiEye, FiPrinter, FiTrash } from "react-icons/fi";
+import { FiCheck, FiPrinter, FiTrash } from "react-icons/fi";
 import Tooltip from "../../common/Tooltip";
 import { BiSolidFileExport } from "react-icons/bi";
+import LoanApproveDisburseModal from "./LoanApproveDisburseModal";
 
 const LoanApplicantsList = () => {
+  const [isModalOpen, setIsModalOpen] = useState(false);
   const [selectedRows, setSelectedRows] = useState([]);
   const [selectAll, setSelectAll] = useState(false);
   const applicants = [
@@ -75,6 +77,13 @@ const LoanApplicantsList = () => {
   const handleDeleteSelected = async () => {
     if (!confirm("Are you sure you want to delete selected rows?")) return;
     toast.success("Selected rows deleted");
+  };
+
+  const handleOpenModal = () => {
+    setIsModalOpen(true);
+  };
+  const handleCloseModal = () => {
+    setIsModalOpen(false);
   };
   return (
     <>
@@ -147,15 +156,14 @@ const LoanApplicantsList = () => {
                 <td>
                   {/* Delete */}
                   <Tooltip text="Approve & Disburse">
-                    <button className="icon-box text-white !bg-cyan-600 hover:!bg-cyan-600/80 ml-2">
+                    <button
+                      className="icon-box text-white !bg-cyan-600 hover:!bg-cyan-600/80 ml-2"
+                      onClick={handleOpenModal}
+                    >
                       <FiCheck />
                     </button>
                   </Tooltip>
-                  <Tooltip text="Details">
-                    <button className="icon-box text-white !bg-green-600 hover:!bg-green-600/80 ml-2">
-                      <FiEye />
-                    </button>
-                  </Tooltip>
+
                   {/* Delete */}
                   <Tooltip text="Delete">
                     <button className="icon-box text-white !bg-red-600 hover:!bg-red-600/80 ml-2">
@@ -168,6 +176,11 @@ const LoanApplicantsList = () => {
           </tbody>
         </table>
       </div>
+      {/* Loan Approval & Disbursal Modal */}
+      <LoanApproveDisburseModal
+        isModalOpen={isModalOpen}
+        handleCloseModal={handleCloseModal}
+      />
     </>
   );
 };

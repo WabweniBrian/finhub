@@ -1,7 +1,7 @@
 export const lineChartData = [
   {
-    name: "Income",
-    data: [50, 64, 48, 66, 49, 68],
+    name: "Loan Income",
+    data: [5000000, 6400000, 4800000, 6600000, 4900000, 6800000],
   },
 ];
 
@@ -76,10 +76,10 @@ export const lineChartOptions = {
   },
 };
 
-export const dognutChartData = [63, 25, 74, 53];
+export const pieChartData = [31, 50, 19];
 
-export const dognutChartOptions = {
-  labels: ["Jaguar", "Link", "Global", "K Express"],
+export const pieChartOptions = {
+  labels: ["Students Pro", "Students Max", "Students Pro Max"],
   states: {
     hover: {
       filter: {
@@ -102,7 +102,48 @@ export const dognutChartOptions = {
       },
     },
   },
-  colors: ["#a288ec", "#ffa071", "#fc424a", "#0b0f19"],
+  colors: ["#a288ec", "#2B5BBA", "#fc424a"],
+  tooltip: {
+    style: {
+      fontSize: "12px",
+      fontFamily: undefined,
+    },
+    onDatasetHover: {
+      style: {
+        fontSize: "12px",
+        fontFamily: undefined,
+      },
+    },
+    theme: "dark",
+  },
+};
+export const donutChartData = [73, 27];
+
+export const donutChartOptions = {
+  labels: ["Locked", "Not locked"],
+  states: {
+    hover: {
+      filter: {
+        type: "none",
+      },
+    },
+  },
+
+  dataLabels: {
+    enabled: false,
+  },
+  hover: { mode: null },
+  plotOptions: {
+    donut: {
+      expandOnClick: false,
+      donut: {
+        labels: {
+          show: false,
+        },
+      },
+    },
+  },
+  colors: ["#FF6370", "#2B5BBA"],
   tooltip: {
     style: {
       fontSize: "12px",

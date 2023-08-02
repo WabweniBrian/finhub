@@ -52,7 +52,7 @@ const Tooltip = ({ children, position, text }) => {
           <div
             className={`
             absolute px-2 py-1 bg-zinc-600 text-slate-50 text-sm rounded-md opacity-100 transition-opacity duration-300 pointer-events-auto whitespace-nowrap ${getPostion()}
-             z-[99999] before:absolute before:w-[0.65rem] before:h-[0.65rem] before:bg-zinc-600 before:rotate-45
+             z-50 before:absolute before:w-[0.65rem] before:h-[0.65rem] before:bg-zinc-600 before:rotate-45
             `}
           >
             {text}

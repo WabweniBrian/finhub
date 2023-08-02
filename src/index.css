@@ -89,11 +89,11 @@ button:disabled {
 
 /* Modals*/
 .modal {
-  @apply fixed top-0 left-0 z-[99] w-full h-full opacity-0 pointer-events-none bg-black/50 lg:static lg:opacity-100 lg:pointer-events-auto lg:bg-transparent transition-a;
+  @apply fixed top-0 left-0 z-50 w-full h-full opacity-0 pointer-events-none bg-black/50 lg:static lg:opacity-100 lg:pointer-events-auto lg:bg-transparent transition-a;
 }
 
 .dialog {
-  @apply absolute text-[15px] left-0 px-2 top-0 max-w-[250px] bg-white z-[99]  w-full h-full -translate-x-[500px] lg:fixed lg:translate-x-0 lg:border-r transition-a;
+  @apply absolute text-[15px] left-0 px-2 top-0 max-w-[250px] bg-white w-full h-full -translate-x-[500px] lg:fixed lg:translate-x-0 lg:border-r transition-a;
 }
 
 .dialog a {

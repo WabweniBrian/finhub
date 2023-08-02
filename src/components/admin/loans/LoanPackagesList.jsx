@@ -1,17 +1,13 @@
 import React, { useState } from "react";
 import useDataTables from "../../common/useDataTables";
 import toast from "react-hot-toast";
-import {
-  FiEdit,
-  FiEye,
-  FiPlusCircle,
-  FiPrinter,
-  FiTrash,
-} from "react-icons/fi";
+import { FiEdit, FiPlusCircle, FiPrinter, FiTrash } from "react-icons/fi";
 import Tooltip from "../../common/Tooltip";
 import { BiSolidFileExport } from "react-icons/bi";
+import EditLoanPackageFormModal from "./EditLoanPackageFormModal";
 
-const LoanPackagesList = () => {
+const LoanPackagesList = ({ handleOpenModal }) => {
+  const [isModalOpen, setIsModalOpen] = useState(false);
   const [selectedRows, setSelectedRows] = useState([]);
   const [selectAll, setSelectAll] = useState(false);
   const packages = [
@@ -58,10 +54,21 @@ const LoanPackagesList = () => {
     if (!confirm("Are you sure you want to delete selected rows?")) return;
     toast.success("Selected rows deleted");
   };
+
+  const handleOpenEditModal = () => {
+    setIsModalOpen(true);
+  };
+  const handleCloseModal = () => {
+    setIsModalOpen(false);
+  };
+
   return (
     <>
-      <div className="flex-align-center gap-2 pb-2 border-b">
-        <button className="btn border border-primary shadow shadow-primary/20 text-primary flex-align-center gap-x-2">
+      <div className="flex-align-center flex-wrap gap-2 pb-2 border-b">
+        <button
+          className="btn border border-primary shadow shadow-primary/20 text-primary flex-align-center gap-x-2"
+          onClick={handleOpenModal}
+        >
           <FiPlusCircle />
           <span>New</span>
         </button>
@@ -117,7 +124,10 @@ const LoanPackagesList = () => {
                 <td>
                   {/* Edit */}
                   <Tooltip text="Edit">
-                    <button className="icon-box text-white !bg-green-600 hover:!bg-green-600/80 ml-2">
+                    <button
+                      className="icon-box text-white !bg-green-600 hover:!bg-green-600/80 ml-2"
+                      onClick={handleOpenEditModal}
+                    >
                       <FiEdit />
                     </button>
                   </Tooltip>
@@ -133,6 +143,11 @@ const LoanPackagesList = () => {
           </tbody>
         </table>
       </div>
+      {/* EditLoanPackageForm Modal */}
+      <EditLoanPackageFormModal
+        isModalOpen={isModalOpen}
+        handleCloseModal={handleCloseModal}
+      />
     </>
   );
 };

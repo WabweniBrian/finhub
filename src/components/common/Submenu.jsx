@@ -1,15 +1,16 @@
 import { FiChevronDown } from "react-icons/fi";
 import { NavLink } from "react-router-dom";
 import Tooltip from "./Tooltip";
-import { useSelector } from "react-redux";
-import { uiStore } from "../../features/uiSlice";
-import { useEffect, useRef, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { closeSidebar, uiStore } from "../../features/uiSlice";
+import { useEffect, useRef } from "react";
 
-const Submenu = ({ title, icon, subLinks }) => {
-  const [isOpen, setIsOpen] = useState(false);
+const Submenu = ({ title, icon, subLinks, isOpen, handleClick }) => {
   const { isSidebarReduced } = useSelector(uiStore);
   const submenuRef = useRef(null);
+  const linkRef = useRef(null);
   const submenuWrapperRef = useRef(null);
+  const dispatch = useDispatch();
 
   useEffect(() => {
     const linksHeight = submenuRef?.current?.getBoundingClientRect().height;
@@ -24,7 +25,8 @@ const Submenu = ({ title, icon, subLinks }) => {
         className={`p-2 flex-center-between gap-x-3 cursor-pointer hover:bg-slate-200 dark:hover:bg-dark-light  rounded-md ${
           isSidebarReduced ? "lg:p-0" : ""
         } ${title === "Settings" ? "!mb-3" : ""}`}
-        onClick={() => setIsOpen(!isOpen)}
+        onClick={handleClick}
+        ref={linkRef}
       >
         {isSidebarReduced && (
           <Tooltip text={title} position="right">
@@ -55,7 +57,7 @@ const Submenu = ({ title, icon, subLinks }) => {
               className={`list-none ${isSidebarReduced ? "ml-1" : ""}`}
               key={title}
             >
-              <NavLink to={url} end>
+              <NavLink to={url} end onClick={() => dispatch(closeSidebar())}>
                 {title}
               </NavLink>
             </li>

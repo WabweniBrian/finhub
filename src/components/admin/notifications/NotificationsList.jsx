@@ -5,7 +5,7 @@ const NotificationsList = () => {
   const notifications = [
     {
       id: 1,
-      message: "John has just booked five seats",
+      message: "A payment has been made recently by Jane",
       time: "12 hrs ago",
       user: {
         name: "John",
@@ -14,6 +14,36 @@ const NotificationsList = () => {
     },
     {
       id: 2,
+      message: "A payment has been made recently by Jane",
+      time: "3 hrs ago",
+      link: "/admin/reservations",
+      user: {
+        name: "Jane",
+        avatar: "/images/avatar.png",
+      },
+    },
+    {
+      id: 3,
+      message: "A payment has been made recently by Jane",
+      time: "3 hrs ago",
+      link: "/admin/reservations",
+      user: {
+        name: "Jane",
+        avatar: "/images/avatar.png",
+      },
+    },
+    {
+      id: 4,
+      message: "A payment has been made recently by Jane",
+      time: "3 hrs ago",
+      link: "/admin/reservations",
+      user: {
+        name: "Jane",
+        avatar: "/images/avatar.png",
+      },
+    },
+    {
+      id: 5,
       message: "A payment has been made recently by Jane",
       time: "3 hrs ago",
       link: "/admin/reservations",

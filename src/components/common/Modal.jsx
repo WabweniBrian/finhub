@@ -31,7 +31,7 @@ const Modal = ({ isOpen, onClose, size, children, scroll }) => {
     <>
       {isOpen && (
         <motion.div
-          className="fixed inset-0 z-[99999] flex items-center justify-center bg-black bg-opacity-50 backdrop-blur-sm p-4"
+          className="fixed w-full h-full left-0 top-0 z-[99999] flex items-center justify-center bg-black bg-opacity-50 backdrop-blur-sm p-4"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}

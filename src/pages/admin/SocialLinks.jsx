@@ -11,8 +11,13 @@ const SocialLinks = () => {
         <Breadcrumb />
       </div>
       <div className="mt-4 card">
-        <AddLinksForm />
-        <Links />
+        <h1 className="text-2xl">
+          These will be used to reach you by your customers
+        </h1>
+        <div className="mt-3 grid grid-cols-1 sm:grid-cols-2 gap-5">
+          <AddLinksForm />
+          <Links />
+        </div>
       </div>
     </div>
   );

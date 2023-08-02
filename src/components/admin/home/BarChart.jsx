@@ -1,13 +1,20 @@
-import React from "react";
+import React, { useState } from "react";
 import { Chart } from "./Chart";
 
 const BarChart = () => {
+  const [year, setYear] = useState("2023");
   return (
     <div className="card mt-5">
       <div className="flex-center-between pb-2 border-b mb-4">
-        <h1>Monthly Reservations Report</h1>
+        <h1 className="text-xl font-semibold">Savings Statistics</h1>
         <div>
-          <select name="years" id="years" className="!pr-8">
+          <select
+            name="years"
+            id="years"
+            className="!pr-8"
+            value={year}
+            onChange={(e) => setYear(e.target.value)}
+          >
             <option value="2015">2015</option>
             <option value="2016">2016</option>
             <option value="2017">2017</option>

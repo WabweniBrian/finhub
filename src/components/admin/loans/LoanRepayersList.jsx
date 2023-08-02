@@ -140,11 +140,6 @@ const LoanRepayersList = () => {
                 <td>{repayer.duration_covered}</td>
                 <td>{repayer.duration_pending}</td>
                 <td>
-                  <Tooltip text="Details">
-                    <button className="icon-box text-white !bg-green-600 hover:!bg-green-600/80 ml-2">
-                      <FiEye />
-                    </button>
-                  </Tooltip>
                   {/* Delete */}
                   <Tooltip text="Delete">
                     <button className="icon-box text-white !bg-red-600 hover:!bg-red-600/80 ml-2">

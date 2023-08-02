@@ -5,7 +5,7 @@ import { FaSpinner } from "react-icons/fa";
 import { useRef, useState } from "react";
 import { postValidationSchema } from "../../../utils/validationSchema";
 
-const AddStudyMaterialForm = () => {
+const EditStudyMaterialForm = () => {
   const imageInput = useRef(null);
   const [image, setImage] = useState("");
   const imageRef = useRef();
@@ -178,4 +178,4 @@ const AddStudyMaterialForm = () => {
   );
 };
 
-export default AddStudyMaterialForm;
+export default EditStudyMaterialForm;

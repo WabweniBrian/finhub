@@ -1,10 +1,12 @@
 import { useState } from "react";
-import { FiPlusCircle, FiTrash } from "react-icons/fi";
+import { FiEdit, FiPlusCircle, FiTrash } from "react-icons/fi";
 import Tooltip from "../../common/Tooltip";
 import useDataTables from "../../common/useDataTables";
 import toast from "react-hot-toast";
+import EditFaqsFormModal from "./EditFaqsFormModal";
 
-const FaqsList = () => {
+const FaqsList = ({ handleOpenModal }) => {
+  const [isModalOpen, setIsModalOpen] = useState(false);
   const [selectedRows, setSelectedRows] = useState([]);
   const [selectAll, setSelectAll] = useState(false);
 
@@ -54,10 +56,20 @@ const FaqsList = () => {
     toast.success("Selected rows deleted");
   };
 
+  const handleOpenEditModal = () => {
+    setIsModalOpen(true);
+  };
+  const handleCloseModal = () => {
+    setIsModalOpen(false);
+  };
+
   return (
     <>
-      <div className="flex-align-center gap-2 pb-2 border-b mt-4">
-        <button className="btn border border-primary shadow shadow-primary/20 text-primary flex-align-center gap-x-2">
+      <div className="flex-align-center flex-wrap gap-2 pb-2 border-b mt-4">
+        <button
+          className="btn border border-primary shadow shadow-primary/20 text-primary flex-align-center gap-x-2"
+          onClick={handleOpenModal}
+        >
           <FiPlusCircle />
           <span>New</span>
         </button>
@@ -101,6 +113,16 @@ const FaqsList = () => {
                 <td className="!whitespace-pre-wrap">{faq.question}</td>
                 <td className="!whitespace-pre-wrap">{faq.answer}</td>
                 <td>
+                  {/* Edit */}
+                  <Tooltip text="Edit">
+                    <button
+                      className="icon-box text-white !bg-green-600 hover:!bg-green-600/80 ml-2"
+                      onClick={handleOpenEditModal}
+                    >
+                      <FiEdit />
+                    </button>
+                  </Tooltip>
+                  {/* Delete */}
                   <Tooltip text="Delete">
                     <button className="icon-box text-white !bg-red-600 hover:!bg-red-600/80 ml-2">
                       <FiTrash />
@@ -112,6 +134,11 @@ const FaqsList = () => {
           </tbody>
         </table>
       </div>
+      {/* EditFaqsForm Modal */}
+      <EditFaqsFormModal
+        isModalOpen={isModalOpen}
+        handleCloseModal={handleCloseModal}
+      />
     </>
   );
 };

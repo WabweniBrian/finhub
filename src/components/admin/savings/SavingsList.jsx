@@ -14,6 +14,7 @@ const SavingsList = () => {
       name: "John Doe",
       email: "johndoe@gmail.com",
       contact: "+2562637822",
+      plan: "Plan 1",
       start_date: "03/03/2023",
       target_amount: "5,000,000",
       saved_amount: "3,00,000",
@@ -27,6 +28,7 @@ const SavingsList = () => {
       name: "John Doe",
       email: "johndoe@gmail.com",
       contact: "+2562637822",
+      plan: "Plan 1",
       start_date: "03/03/2023",
       target_amount: "5,000,000",
       saved_amount: "3,00,000",
@@ -40,6 +42,7 @@ const SavingsList = () => {
       name: "John Doe",
       email: "johndoe@gmail.com",
       contact: "+2562637822",
+      plan: "Plan 1",
       start_date: "03/03/2023",
       target_amount: "5,000,000",
       saved_amount: "3,00,000",
@@ -75,7 +78,7 @@ const SavingsList = () => {
   };
   return (
     <>
-      <div className="flex-align-center gap-2 pb-2 border-b">
+      <div className="flex-align-center flex-wrap gap-2 pb-2 border-b">
         <button className="btn border border-primary shadow shadow-primary/20 text-primary flex-align-center gap-x-2">
           <FiPrinter />
           <span>Print</span>
@@ -108,6 +111,7 @@ const SavingsList = () => {
               <th>Name</th>
               <th>Email</th>
               <th>Phone Number</th>
+              <th>Plan</th>
               <th>Start Date</th>
               <th>Target Amount</th>
               <th>Amount Saved</th>
@@ -132,6 +136,7 @@ const SavingsList = () => {
                 <td>{saving.name}</td>
                 <td>{saving.email}</td>
                 <td>{saving.contact} </td>
+                <td>{saving.plan} </td>
                 <td>{saving.start_date}</td>
                 <td>Ugx {saving.target_amount}</td>
                 <td>Ugx {saving.saved_amount}</td>

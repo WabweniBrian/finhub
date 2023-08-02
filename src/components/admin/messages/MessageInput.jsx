@@ -8,7 +8,7 @@ const MessageInput = () => {
         type="text"
         name="message"
         placeholder="Type Something"
-        className="px-8"
+        className="px-8 border-gray-300"
       />
       <FiSend className="icon-send absolute right-2 top-1/2 -translate-y-1/2 text-primary" />
     </div>

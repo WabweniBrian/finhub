@@ -17,7 +17,11 @@ const Messages = () => {
         <div className="md:col-span-1">
           <div className="relative">
             <BiSearchAlt className="absolute top-1/2 -translate-y-1/2 left-2" />
-            <input type="text" placeholder="Search.." className="pl-8" />
+            <input
+              type="text"
+              placeholder="Search.."
+              className="pl-8 border-gray-300"
+            />
           </div>
           <div className="h-[70vh] overflow-auto mt-4">
             <AllMessages />

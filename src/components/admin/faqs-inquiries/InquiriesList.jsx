@@ -1,8 +1,9 @@
 import { useState } from "react";
-import { FiPlusCircle, FiTrash } from "react-icons/fi";
+import { FiEdit, FiPrinter, FiTrash } from "react-icons/fi";
 import Tooltip from "../../common/Tooltip";
 import useDataTables from "../../common/useDataTables";
 import toast from "react-hot-toast";
+import { BiSolidFileExport } from "react-icons/bi";
 
 const InquiriesList = () => {
   const [selectedRows, setSelectedRows] = useState([]);
@@ -12,6 +13,23 @@ const InquiriesList = () => {
     {
       id: 1,
       images: ["/images/screen.png", "/images/photo (57).jpg"],
+      subject: "Transaction error",
+      inquiry:
+        "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quae perspiciatis libero quo vero natus eveniet placeat id dolorem unde sed autem, vel deserunt illum ea nemo praesentium eius eligendi. Modi voluptatem, ipsa odio pariatur, enim sequi consequuntur obcaecati nisi aliquam quisquam cupiditate repudiandae recusandae quaerat, commodi ratione animi beatae officiis.",
+    },
+    {
+      id: 2,
+      images: [
+        "/images/photo (57).jpg",
+        "/images/screen.png",
+        "/images/photo (92).jpg",
+      ],
+      subject: "Transaction error",
+      inquiry:
+        "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quae perspiciatis libero quo vero natus eveniet placeat id dolorem unde sed autem, vel deserunt illum ea nemo praesentium eius eligendi. Modi voluptatem, ipsa odio pariatur, enim sequi consequuntur obcaecati nisi aliquam quisquam cupiditate repudiandae recusandae quaerat, commodi ratione animi beatae officiis.",
+    },
+    {
+      id: 3,
       subject: "Transaction error",
       inquiry:
         "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quae perspiciatis libero quo vero natus eveniet placeat id dolorem unde sed autem, vel deserunt illum ea nemo praesentium eius eligendi. Modi voluptatem, ipsa odio pariatur, enim sequi consequuntur obcaecati nisi aliquam quisquam cupiditate repudiandae recusandae quaerat, commodi ratione animi beatae officiis.",
@@ -32,7 +50,7 @@ const InquiriesList = () => {
     if (selectAll) {
       setSelectedRows([]);
     } else {
-      const allIds = inquiries.map((inquiry) => inquiry.transaction_id);
+      const allIds = inquiries.map((inquiry) => inquiry.id);
       setSelectedRows(allIds);
     }
     setSelectAll(!selectAll);
@@ -45,7 +63,15 @@ const InquiriesList = () => {
 
   return (
     <>
-      <div className="flex-align-center gap-2 pb-2 border-b mt-4">
+      <div className="flex-align-center flex-wrap gap-2 pb-2 border-b mt-4">
+        <button className="btn border border-primary shadow shadow-primary/20 text-primary flex-align-center gap-x-2">
+          <FiPrinter />
+          <span>Print</span>
+        </button>
+        <button className="btn border border-primary shadow shadow-primary/20 text-primary flex-align-center gap-x-2">
+          <BiSolidFileExport />
+          <span>Excel</span>
+        </button>
         {selectedRows.length > 0 && (
           <button
             className="btn !bg-red-600 hover:!bg-red-600/80 text-white"
@@ -67,6 +93,7 @@ const InquiriesList = () => {
                 />
               </th>
               <th>ID</th>
+              <th>Images</th>
               <th className="!whitespace-pre-wrap">Question</th>
               <th className="!whitespace-pre-wrap">Answer</th>
               <th>Actions</th>
@@ -87,15 +114,15 @@ const InquiriesList = () => {
                   {inquiry?.images ? (
                     <>
                       {inquiry?.images?.slice(0, 1)?.map((image, i) => (
-                        <div className="relative" key={i}>
+                        <div className="relative cursor-pointer" key={i}>
                           <img
                             src={image}
                             alt={inquiry.subject}
-                            className="w-10 h-20 object-cover"
+                            className="w-20 h-20 object-contain"
                           />
                           {inquiry.images.length > 1 && (
-                            <div className="absolute w-ful h-full top-0 left-0 bg-black/50 flex-center-center text-white">
-                              + {inquiry.length - 1}
+                            <div className="absolute w-full h-full top-0 left-0 bg-black/40 flex-center-center text-white">
+                              + {inquiry.images.length - 1}
                             </div>
                           )}
                         </div>
@@ -108,12 +135,6 @@ const InquiriesList = () => {
                 <td className="!whitespace-pre-wrap">{inquiry.subject}</td>
                 <td className="!whitespace-pre-wrap">{inquiry.inquiry}</td>
                 <td>
-                  {/* Edit */}
-                  <Tooltip text="Edit">
-                    <button className="icon-box text-white !bg-green-600 hover:!bg-green-600/80 ml-2">
-                      <FiEdit />
-                    </button>
-                  </Tooltip>
                   {/* Delete */}
                   <Tooltip text="Delete">
                     <button className="icon-box text-white !bg-red-600 hover:!bg-red-600/80 ml-2">

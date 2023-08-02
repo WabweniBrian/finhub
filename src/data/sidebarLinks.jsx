@@ -106,14 +106,9 @@ export const navLinks = [
         icon: <GiGraduateCap />,
         url: "/study-materials",
       },
+
       {
         id: 8,
-        title: "FAQs & Inquiries",
-        icon: <BiInfoCircle />,
-        url: "/faq-inquiries",
-      },
-      {
-        id: 9,
         title: "Reports & Analytics",
         icon: <AiOutlineFileDone />,
         subLinks: [
@@ -126,20 +121,16 @@ export const navLinks = [
             url: "/reports/savings",
           },
           {
-            title: "Study Materials",
-            url: "/reports/study-materials",
-          },
-          {
             title: "Logs",
             url: "/reports/logs",
           },
         ],
       },
       {
-        id: 10,
-        title: "Payment Methods",
-        icon: <FiLayers />,
-        url: "/payment-methods",
+        id: 9,
+        title: "FAQs & Inquiries",
+        icon: <BiInfoCircle />,
+        url: "/faq-inquiries",
       },
     ],
   },
@@ -147,13 +138,13 @@ export const navLinks = [
     label: "MESSAGES & NOTIFICATIONS",
     links: [
       {
-        id: 11,
+        id: 10,
         title: "Notifications",
         icon: <FiBell />,
         url: "/notifications",
       },
       {
-        id: 12,
+        id: 11,
         title: "Messages",
         icon: <BiMessageRoundedDots />,
         url: "/messages",

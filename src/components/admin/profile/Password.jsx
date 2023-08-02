@@ -1,68 +1,103 @@
-import { useState } from "react";
-import { BiLockAlt, BiLockOpen } from "react-icons/bi";
-import { FiLock } from "react-icons/fi";
+import { useFormik } from "formik";
+import toast from "react-hot-toast";
+import { FaSpinner } from "react-icons/fa";
+import Input from "../../common/Input";
+import { resetPasswordValidationSchema } from "../../../utils/validationSchema";
 
 const Password = () => {
-  const [password, setPassword] = useState({
-    old: "1234567",
-    new: "1234567",
-    confirm: "123456",
-  });
-
-  const handleChange = (e) => {
-    setPassword({ ...password, [e.target.name]: [e.target.value] });
+  const initialValues = {
+    old_password: "",
+    new_password: "",
+    password_confirmation: "",
   };
+
+  const handleSubmit = async (values) => {
+    toast.success("Password reset successfully");
+    console.log(values);
+  };
+
+  const {
+    values,
+    errors,
+    handleChange,
+    handleBlur,
+    touched,
+    isSubmitting,
+    handleSubmit: submit,
+  } = useFormik({
+    initialValues,
+    validationSchema: resetPasswordValidationSchema,
+    onSubmit: handleSubmit,
+  });
   return (
     <div className="mt-8">
       <div className="pb-3 border-b dark:border-b-dark">
         <h1 className="font-semibold">Password</h1>
         <p>Reset your password from here </p>
       </div>
-      <div className="flex-align-center flex-col sm:flex-row gap-4 mt-4">
-        <div className="flex-1 w-full sm:w-fit">
-          <p>Old Password</p>
-          <div className="relative mt-2">
-            <FiLock className="absolute top-1/2 -translate-y-1/2 left-2" />
-            <input
+      <form onSubmit={submit}>
+        <div className="flex-align-center flex-col sm:flex-row gap-4 mt-4">
+          {/* Old Password */}
+          <div className="mt-6 flex-1 w-full sm:w-fit">
+            <Input
               type="password"
-              value={password.old}
-              name="old"
+              label="Old password*"
+              value={values.old_password}
+              id="old_password"
               onChange={handleChange}
-              className="pl-8 border-gray-300"
+              onBlur={handleBlur}
+              invalid={touched.old_password && errors.old_password}
             />
+            {touched.old_password && errors.old_password ? (
+              <div className="text-red-600 text-sm">{errors.old_password}</div>
+            ) : null}
+          </div>
+          {/* New Password */}
+          <div className="mt-6 flex-1 w-full sm:w-fit">
+            <Input
+              type="password"
+              label="New password*"
+              value={values.new_password}
+              id="new_password"
+              onChange={handleChange}
+              onBlur={handleBlur}
+              invalid={touched.new_password && errors.new_password}
+            />
+            {touched.new_password && errors.new_password ? (
+              <div className="text-red-600 text-sm">{errors.new_password}</div>
+            ) : null}
           </div>
         </div>
 
-        <div className="flex-1 w-full sm:w-fit">
-          <p>New Password</p>
-          <div className="relative mt-2">
-            <BiLockAlt className="absolute top-1/2 -translate-y-1/2 left-2" />
-            <input
-              type="password"
-              value={password.new}
-              name="new"
-              onChange={handleChange}
-              className="pl-8 border-gray-300"
-            />
-          </div>
-        </div>
-      </div>
-      <div className="mt-4">
-        <p>Confirm Password</p>
-        <div className="relative mt-2">
-          <BiLockOpen className="absolute top-1/2 -translate-y-1/2 left-2" />
-          <input
+        {/* Confirm Password */}
+        <div className="mt-6">
+          <Input
             type="password"
-            value={password.confirm}
-            name="confirm"
+            label="Confirm Password*"
+            value={values.password_confirmation}
+            id="password_confirmation"
             onChange={handleChange}
-            className="pl-8 border-gray-300"
+            onBlur={handleBlur}
+            invalid={
+              touched.password_confirmation && errors.password_confirmation
+            }
           />
+          {touched.password_confirmation && errors.password_confirmation ? (
+            <div className="text-red-600 text-sm">
+              {errors.password_confirmation}
+            </div>
+          ) : null}
         </div>
-      </div>
-      <div className="flex-center-center mt-4">
-        <button className="btn btn-primary">update</button>
-      </div>
+        <div className="flex-center-center mt-4">
+          <button
+            type="submit"
+            className="btn block text-center !opacity-100 btn-primary"
+            disabled={isSubmitting}
+          >
+            {isSubmitting ? <FaSpinner className="animate-spin" /> : "Update"}
+          </button>
+        </div>
+      </form>
     </div>
   );
 };

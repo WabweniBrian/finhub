@@ -50,9 +50,12 @@ export const data = {
   labels,
   datasets: [
     {
-      label: "TICKET SALES",
-      data: [60, 80, 30, 90, 35, 100, 10, 5, 4, 4, 6, 3],
-      backgroundColor: "#A061F6",
+      label: "SAVINGS",
+      data: [
+        12000000, 12500000, 7898000, 9000000, 6780000, 9800000, 10300000,
+        5006000, 5940000, 11000000, 8000000, 10000000,
+      ],
+      backgroundColor: "#2B5BBA",
     },
   ],
 };

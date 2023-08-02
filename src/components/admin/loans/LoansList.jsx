@@ -4,8 +4,10 @@ import toast from "react-hot-toast";
 import { FiEye, FiPrinter, FiTrash } from "react-icons/fi";
 import Tooltip from "../../common/Tooltip";
 import { BiSolidFileExport } from "react-icons/bi";
+import LoanDetailsModal from "./LoanDetailsModal";
 
 const LoansList = () => {
+  const [isModalOpen, setIsModalOpen] = useState(false);
   const [selectedRows, setSelectedRows] = useState([]);
   const [selectAll, setSelectAll] = useState(false);
   const loans = [
@@ -70,9 +72,17 @@ const LoansList = () => {
     if (!confirm("Are you sure you want to delete selected rows?")) return;
     toast.success("Selected rows deleted");
   };
+
+  const handleOpenModal = () => {
+    setIsModalOpen(true);
+  };
+  const handleCloseModal = () => {
+    setIsModalOpen(false);
+  };
+
   return (
     <>
-      <div className="flex-align-center gap-2 pb-2 border-b">
+      <div className="flex-align-center flex-wrap gap-2 pb-2 border-b">
         <button className="btn border border-primary shadow shadow-primary/20 text-primary flex-align-center gap-x-2">
           <FiPrinter />
           <span>Print</span>
@@ -137,7 +147,10 @@ const LoansList = () => {
                 <td>
                   {/* Delete */}
                   <Tooltip text="Details">
-                    <button className="icon-box text-white !bg-green-600 hover:!bg-green-600/80 ml-2">
+                    <button
+                      className="icon-box text-white !bg-green-600 hover:!bg-green-600/80 ml-2"
+                      onClick={handleOpenModal}
+                    >
                       <FiEye />
                     </button>
                   </Tooltip>
@@ -153,6 +166,11 @@ const LoansList = () => {
           </tbody>
         </table>
       </div>
+      {/* Loan Details Modal */}
+      <LoanDetailsModal
+        isModalOpen={isModalOpen}
+        handleCloseModal={handleCloseModal}
+      />
     </>
   );
 };

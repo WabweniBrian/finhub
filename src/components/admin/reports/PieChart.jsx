@@ -1,7 +1,7 @@
 import React from "react";
 import ReactApexChart from "react-apexcharts";
 
-class DonutChart extends React.Component {
+class PieChart extends React.Component {
   constructor(props) {
     super(props);
 
@@ -21,11 +21,11 @@ class DonutChart extends React.Component {
   render() {
     return (
       <div>
-        <h1 className="text-2xl font-semibold mb-3">Account Status</h1>
+        <h1 className="text-2xl font-semibold mb-3">Loan Packages</h1>
         <ReactApexChart
           options={this.state.chartOptions}
           series={this.state.chartData}
-          type="donut"
+          type="pie"
           width="100%"
           height="100%"
         />
@@ -34,4 +34,4 @@ class DonutChart extends React.Component {
   }
 }
 
-export default DonutChart;
+export default PieChart;

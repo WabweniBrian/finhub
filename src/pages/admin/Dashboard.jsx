@@ -1,61 +1,28 @@
-import React, { useState } from "react";
-import Input from "../../components/common/Input";
-import { FiBriefcase, FiUser } from "react-icons/fi";
-import Select from "../../components/common/Select";
-import { Button } from "antd";
+import RecentTransactions from "../../components/admin/home/RecentTransactions";
+import Cards from "../../components/admin/home/Cards";
+import BarChart from "../../components/admin/home/BarChart";
+import PopularPackages from "../../components/admin/home/PopularPackages";
 
 const AdminDashboard = () => {
-  const [user, setUser] = useState({
-    name: "",
-    email: "",
-    password: "",
-    message: "",
-  });
-  const handleChange = (e) => {
-    setUser((prevUser) => ({ ...prevUser, [e.target.name]: e.target.value }));
-  };
-
-  const options = [
-    {
-      value: "react.js",
-      label: "React.js",
-    },
-    {
-      value: "next.js",
-      label: "Next.js",
-    },
-    {
-      value: "vue",
-      label: "Vue",
-    },
-    {
-      value: "nuxt",
-      label: "Nuxt",
-    },
-    {
-      value: "sveltkit",
-      label: "Sveltkit",
-    },
-    {
-      value: "solid.js",
-      label: "Solid.js",
-    },
-    {
-      value: "angular",
-      label: "Angular",
-    },
-  ];
-
-  const handleSelect = (selectedValue) => {
-    console.log(selectedValue);
-  };
-
   return (
     <div>
       <div>
         <h1 className="text-2xl font-semibold">Dashboard</h1>
       </div>
-      <div className="mt-5 card"></div>
+      <Cards />
+      <div className="mt-1 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+        <div className="lg:col-span-2">
+          <BarChart />
+        </div>
+        <div className="lg:col-span-1 h-fit sticky top-0">
+          <PopularPackages />
+        </div>
+      </div>
+      <div className="mt-5 card">
+        <div className="mt-4">
+          <RecentTransactions />
+        </div>
+      </div>
     </div>
   );
 };

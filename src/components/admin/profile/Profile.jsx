@@ -1,105 +1,99 @@
-import { useRef, useState } from "react";
-import { BiStreetView } from "react-icons/bi";
-import { FiPhone, FiHome } from "react-icons/fi";
+import { useFormik } from "formik";
+import toast from "react-hot-toast";
+import { FaSpinner } from "react-icons/fa";
+import Input from "../../common/Input";
+import { profilevalidationSchema } from "../../../utils/validationSchema";
+import { FiMail, FiPhone, FiUser } from "react-icons/fi";
 
 const Profile = () => {
-  const [user, setUser] = useState({
-    username: "John Doe",
+  const initialValues = {
+    username: "Wabweni Brian",
     email: "wabwenib66@gmail.com",
-    phone: "0732783782",
-  });
-
-  const handleChange = (e) => {
-    setUser({ ...user, [e.target.name]: [e.target.value] });
+    phone: "+2568949499",
   };
 
-  const imageInput = useRef(null);
-  const [profileImage, setProfileImage] = useState("");
+  const handleSubmit = async (values) => {
+    toast.success("Profile updated successfully");
+    console.log(values);
+  };
 
+  const {
+    values,
+    errors,
+    handleChange,
+    handleBlur,
+    touched,
+    isSubmitting,
+    handleSubmit: submit,
+  } = useFormik({
+    initialValues,
+    validationSchema: profilevalidationSchema,
+    onSubmit: handleSubmit,
+  });
   return (
     <div className="mt-8">
-      <div className="pb-3 border-b">
-        <h1 className="font-semibold">Profile</h1>
-        <p>Update your photo and personal details here </p>
+      <div className="pb-3 border-b dark:border-b-dark">
+        <h1 className="font-semibold">Password</h1>
+        <p>Reset your password from here </p>
       </div>
-      <div className="flex-align-center flex-col sm:flex-row gap-4 mt-4">
-        <div className="flex-1 w-full sm:w-fit">
-          <p>Username</p>
-          <div className="mt-2 relative">
-            <FiHome className="absolute top-1/2 -translate-y-1/2 left-2" />
-            <input
-              type="text"
-              value={user.username}
-              name="username"
+      <form onSubmit={submit}>
+        <div className="flex-align-center flex-col sm:flex-row gap-4 mt-4">
+          {/* Username */}
+          <div className="mt-6 flex-1 w-full sm:w-fit">
+            <Input
+              label="Username*"
+              value={values.username}
+              id="username"
+              icon={<FiUser />}
               onChange={handleChange}
-              className="pl-8 border-gray-300"
+              onBlur={handleBlur}
+              invalid={touched.username && errors.username}
             />
+            {touched.username && errors.username ? (
+              <div className="text-red-600 text-sm">{errors.username}</div>
+            ) : null}
+          </div>
+          {/* Email Address */}
+          <div className="mt-6 flex-1 w-full sm:w-fit">
+            <Input
+              label="Email Address*"
+              value={values.email}
+              id="email"
+              icon={<FiMail />}
+              onChange={handleChange}
+              onBlur={handleBlur}
+              invalid={touched.email && errors.email}
+            />
+            {touched.email && errors.email ? (
+              <div className="text-red-600 text-sm">{errors.email}</div>
+            ) : null}
           </div>
         </div>
-
-        <div className="flex-1 w-full sm:w-fit">
-          <p>Email Address</p>
-          <div className="mt-2 relative">
-            <BiStreetView className="absolute top-1/2 -translate-y-1/2 left-2" />
-            <input
-              type="text"
-              value={user.email}
-              name="email"
-              onChange={handleChange}
-              className="pl-8 border-gray-300"
-            />
-          </div>
-        </div>
-      </div>
-      <div className="mt-4">
-        <p>Phone Number</p>
-        <div className="mt-2 relative">
-          <FiPhone className="absolute top-1/2 -translate-y-1/2 left-2" />
-          <input
-            type="number"
-            value={user.phone}
-            name="phone"
+        {/* Phone */}
+        <div className="mt-6">
+          <Input
+            label="Phone*"
+            value={values.phone}
+            id="phone"
+            icon={<FiPhone />}
             onChange={handleChange}
-            className="pl-8 border-gray-300"
+            onBlur={handleBlur}
+            invalid={touched.phone && errors.phone}
           />
+          {touched.phone && errors.phone ? (
+            <div className="text-red-600 text-sm">{errors.phone}</div>
+          ) : null}
         </div>
-      </div>
-
-      <div className="mt-8 flex-align-center gap-6 pt-3 border-t dark:border-t-dark">
-        <div>
-          <h1 className="font-semibold">Profile Photo</h1>
-          <p>Upload your profile photo</p>
-        </div>
-        <div className="flex-shrink-0">
-          <input
-            type="file"
-            hidden
-            ref={imageInput}
-            onChange={(e) => setProfileImage(e.target.files[0])}
-          />
-          <img
-            src={`${
-              profileImage
-                ? URL.createObjectURL(profileImage)
-                : "/images/placeholder.png"
-            }`}
-            alt="Profile Image"
-            className="w-12 h-12 rounded-full object-cover sm:cursor-pointer"
-            onClick={() => imageInput.current.click()}
-          />
-        </div>
-        <div className="flex-align-center gap-x-4">
-          <p
-            className="text-red-500 sm:cursor-pointer"
-            onClick={() => setProfileImage("")}
+        <div className="flex-center-center mt-4">
+          <button
+            type="submit"
+            className="btn block text-center !opacity-100 btn-primary"
+            disabled={isSubmitting}
           >
-            Delete
-          </p>
+            {isSubmitting ? <FaSpinner className="animate-spin" /> : "Update"}
+          </button>
         </div>
-      </div>
-      <div className="flex-center-center mt-4">
-        <button className="btn btn-primary">update</button>
-      </div>
+      </form>
     </div>
   );
 };

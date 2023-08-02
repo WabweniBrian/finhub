@@ -33,6 +33,7 @@ const AdminLayout = () => {
         </div>
         <div className="bg-main-bg relative z-10">
           <Navbar />
+
           <div
             className="px-4 pt-20 pb-6 lg:px-6"
             onClick={handleCloseDropdown}

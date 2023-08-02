@@ -10,6 +10,7 @@ import Submenu from "./Submenu";
 
 const Sidebar = () => {
   const [size, setSize] = useState("");
+  const [openIndex, setOpenIndex] = useState(null);
   const { isSidebarOpen, isSidebarReduced } = useSelector(uiStore);
   const dispatch = useDispatch();
 
@@ -30,6 +31,10 @@ const Sidebar = () => {
     return () => window.removeEventListener("resize", expandSidebarWidth);
   }, []);
 
+  const handleSubMenuClick = (index) => {
+    setOpenIndex(openIndex === index ? null : index);
+  };
+
   return (
     <div
       className={`modal ${isSidebarOpen ? "open" : ""}`}
@@ -38,8 +43,8 @@ const Sidebar = () => {
       <div
         className={`dialog ${isSidebarOpen ? "open" : ""} ${
           isSidebarReduced
-            ? "lg:!max-w-[60px]"
-            : "lg:overflow-hidden overflow-auto lg:hover:overflow-auto"
+            ? "lg:!max-w-[60px] lg:z-20"
+            : "lg:overflow-y-hidden overflow-y-auto lg:hover:overflow-y-auto"
         }`}
       >
         <div className="py-2 mb-4 border-b border-slate-200 flex-center-between lg:hidden">
@@ -74,8 +79,8 @@ const Sidebar = () => {
               >
                 {label}
               </h5>
-              {links?.map(({ id, title, icon, url, subLinks }) => (
-                <div key={id}>
+              {links?.map(({ id, title, icon, url, subLinks }, index) => (
+                <div key={id} className="relative">
                   {!subLinks ? (
                     <NavLink
                       to={url}
@@ -109,6 +114,8 @@ const Sidebar = () => {
                       title={title}
                       icon={icon}
                       subLinks={subLinks}
+                      isOpen={openIndex === index}
+                      handleClick={() => handleSubMenuClick(index)}
                     />
                   )}
                 </div>
